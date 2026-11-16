@@ -1,0 +1,44 @@
+{
+  "current": {
+    "color_bg": "#FAF8F5",
+    "color_surface": "#FFFFFF",
+    "color_text": "#141413",
+    "color_text_muted": "#686663",
+    "color_border": "#E6E2DC",
+    "color_accent": "#2D312E",
+    "color_button_bg": "#141413",
+    "color_button_text": "#FFFFFF",
+    "color_badge_sale": "#D9534F",
+    "color_badge_digital": "#1A4731",
+    "page_max_width": 1400,
+    "border_radius": 0,
+    "cart_type": "drawer",
+    "show_cart_note": true,
+    "free_shipping_threshold": "1499",
+    "social_instagram_link": "https://instagram.com/sevolf",
+    "social_twitter_link": "https://twitter.com/sevolf",
+    "social_pinterest_link": "https://pinterest.com/sevolf"
+  },
+  "presets": {
+    "Default": {
+      "color_bg": "#FAF8F5",
+      "color_surface": "#FFFFFF",
+      "color_text": "#141413",
+      "color_text_muted": "#686663",
+      "color_border": "#E6E2DC",
+      "color_accent": "#2D312E",
+      "color_button_bg": "#141413",
+      "color_button_text": "#FFFFFF",
+      "color_badge_sale": "#D9534F",
+      "color_badge_digital": "#1A4731",
+      "page_max_width": 1400,
+      "border_radius": 0,
+      "cart_type": "drawer",
+      "show_cart_note": true,
+      "free_shipping_threshold": "1499",
+      "social_instagram_link": "https://instagram.com/sevolf",
+      "social_twitter_link": "https://twitter.com/sevolf",
+      "social_pinterest_link": "https://pinterest.com/sevolf"
+    }
+  }
+}

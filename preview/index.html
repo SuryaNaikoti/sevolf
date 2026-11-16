@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ETERNAL MOTION — Oversized Graphic T-Shirt // SEVOLF SHOWROOM</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Syne:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./assets/base.css">
+  <link rel="stylesheet" href="./assets/theme.css">
+
+  <style>
+    /* Live Preview Top Status Bar */
+    .preview-statusbar {
+      background: #141413;
+      color: #FAF8F5;
+      padding: 8px 24px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .preview-statusbar__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .preview-statusbar__badge::before {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--color-brand-orange);
+      box-shadow: 0 0 10px var(--color-brand-orange);
+    }
+
+    @media (max-width: 960px) {
+      .preview-statusbar {
+        display: none !important;
+      }
+      .announcement-bar {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="template-product">
+
+  <!-- Top Preview Status -->
+  <div class="preview-statusbar">
+    <span class="preview-statusbar__badge">SEVOLF OS 2.0 // EDITORIAL COMMERCE SHOWROOM</span>
+    <span>ETERNAL MOTION &bull; ₹1,499 INR &bull; PLAIN WHITE COLLAR</span>
+  </div>
+
+  <!-- Announcement Bar -->
+  <aside class="announcement-bar" role="region" aria-label="Announcement">
+    <div class="container announcement-bar__inner">
+      <span class="announcement-bar__text">COMPLIMENTARY STANDARD SHIPPING ON ORDERS OVER ₹1,499</span>
+    </div>
+  </aside>
+
+  <!-- Site Header (Minimal 3-Part Layout) -->
+  <header class="site-header" role="banner" id="SiteHeader">
+    <div class="container">
+      <div class="header-inner">
+        <!-- Mobile Menu Toggle -->
+        <button
+          type="button"
+          class="mobile-menu-toggle action-btn"
+          data-mobile-menu-toggle
+          aria-label="Open Navigation"
+          aria-expanded="false"
+          aria-controls="MobileNavDrawer"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- LEFT: Primary Editorial Links -->
+        <nav class="header-nav header-nav--left" role="navigation" aria-label="Primary Categories">
+          <a href="#" class="nav-link">SHOP</a>
+          <a href="#" class="nav-link">BRAND</a>
+          <a href="#" class="nav-link">JOURNAL</a>
+        </nav>
+
+        <!-- CENTER: Clean Geometric Wordmark -->
+        <div class="header-logo-wrapper">
+          <a href="#" class="header-logo" aria-label="SEVOLF Home">SEVOLF</a>
+        </div>
+
+        <!-- RIGHT: Utility Controls -->
+        <div class="header-actions header-actions--right">
+          <button type="button" class="header-action-text-btn" aria-label="Search Catalog">
+            <span class="header-action-label">SEARCH</span>
+            <span class="header-action-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+          </button>
+          <a href="#" class="header-action-text-btn" aria-label="Account">
+            <span class="header-action-label">ACCOUNT</span>
+            <span class="header-action-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+          </a>
+          <button type="button" class="header-action-text-btn header-action-bag" data-cart-drawer-trigger aria-label="Bag">
+            <span class="header-action-label">BAG</span>
+            <span class="header-action-bag-count">(<span id="cartCountBadge">0</span>)</span>
+            <span class="header-action-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+    <section class="product-section section-spacing" data-section-type="product">
+      <div class="container">
+        
+        <!-- Breadcrumbs (Desktop) -->
+        <nav class="product-breadcrumbs product-breadcrumbs--desktop" aria-label="Breadcrumb">
+          <ol class="product-breadcrumbs__list">
+            <li><a href="#">HOME</a></li>
+            <li class="breadcrumbs__sep">/</li>
+            <li><a href="#">T-SHIRTS</a></li>
+            <li class="breadcrumbs__sep">/</li>
+            <li class="breadcrumbs__current" aria-current="page">ETERNAL MOTION — OVERSIZED GRAPHIC T-SHIRT</li>
+          </ol>
+        </nav>
+
+        <!-- Main Product Split Layout: 60/40 Showroom Grid -->
+        <div class="product-page-layout">
+          
+          <!-- LEFT: Media Gallery — 60-65% Editorial Sequence with Paired Grid and 3D Depth -->
+          <div class="product-gallery" data-product-gallery>
+            
+            <!-- Desktop Editorial Grid with Paired Composition -->
+            <div class="product-gallery__grid" data-gallery-grid>
+              
+              <!-- WHITE 001 Front view -->
+              <div class="product-gallery__item is-active" data-media-id="med-1" data-index="0" data-color="white" data-depth-item>
+                <div class="gallery-item-number" aria-hidden="true">
+                  <span class="gallery-item-number__dot"></span>
+                  <span class="gallery-item-number__code">001</span>
+                </div>
+                <button
+                  type="button"
+                  class="product-gallery__zoom-trigger"
+                  data-gallery-lightbox-trigger
+                  data-full-image="./assets/product-1.jpg"
+                  aria-label="View larger image 1 of 5"
+                >
+                  <img
+                    src="./assets/product-1.jpg"
+                    alt="ETERNAL MOTION White Front View — Unbranded Clean Collar"
+                    loading="eager"
+                    width="1200"
+                    height="1500"
+                    class="product-gallery__image"
+                    data-media-image
+                  >
+                  <span class="product-gallery__zoom-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <!-- WHITE 002 Back graphic -->
+              <div class="product-gallery__item" data-media-id="med-2" data-index="1" data-color="white" data-depth-item>
+                <div class="gallery-item-number" aria-hidden="true">
+                  <span class="gallery-item-number__dot"></span>
+                  <span class="gallery-item-number__code">002</span>
+                </div>
+                <button
+                  type="button"
+                  class="product-gallery__zoom-trigger"
+                  data-gallery-lightbox-trigger
+                  data-full-image="./assets/product-2.jpg"
+                  aria-label="View larger image 2 of 5"
+                >
+                  <img
+                    src="./assets/product-2.jpg"
+                    alt="ETERNAL MOTION White Back Graphic with Orbital Forms"
+                    loading="lazy"
+                    width="1200"
+                    height="1500"
+                    class="product-gallery__image"
+                    data-media-image
+                  >
+                  <span class="product-gallery__zoom-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <!-- WHITE 003 Lifestyle editorial -->
+              <div class="product-gallery__item" data-media-id="med-3" data-index="2" data-color="white" data-depth-item>
+                <div class="gallery-item-number" aria-hidden="true">
+                  <span class="gallery-item-number__dot"></span>
+                  <span class="gallery-item-number__code">003</span>
+                </div>
+                <button
+                  type="button"
+                  class="product-gallery__zoom-trigger"
+                  data-gallery-lightbox-trigger
+                  data-full-image="./assets/product-3.jpg"
+                  aria-label="View larger image 3 of 5"
+                >
+                  <img
+                    src="./assets/product-3.jpg"
+                    alt="ETERNAL MOTION White Lifestyle Editorial"
+                    loading="lazy"
+                    width="1200"
+                    height="1500"
+                    class="product-gallery__image"
+                    data-media-image
+                  >
+                  <span class="product-gallery__zoom-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <!-- WHITE 004 Chest detail -->
+              <div class="product-gallery__item" data-media-id="med-4" data-index="3" data-color="white" data-depth-item>
+                <div class="gallery-item-number" aria-hidden="true">
+                  <span class="gallery-item-number__dot"></span>
+                  <span class="gallery-item-number__code">004</span>
+                </div>
+                <button
+                  type="button"
+                  class="product-gallery__zoom-trigger"
+                  data-gallery-lightbox-trigger
+                  data-full-image="./assets/product-1.jpg"
+                  aria-label="View larger image 4 of 5"
+                >
+                  <img
+                    src="./assets/product-1.jpg"
+                    alt="ETERNAL MOTION White Left Chest DTF Emblem"
+                    loading="lazy"
+                    width="1200"
+                    height="1500"
+                    class="product-gallery__image"
+                    data-media-image
+                  >
+                  <span class="product-gallery__zoom-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <!-- WHITE 005 Wide architectural back composition -->
+              <div class="product-gallery__item product-gallery__item--wide" data-media-id="med-5" data-index="4" data-color="white" data-depth-item>
+                <div class="gallery-item-number" aria-hidden="true">
+                  <span class="gallery-item-number__dot"></span>
+                  <span class="gallery-item-number__code">005</span>
+                </div>
+                <button
+                  type="button"
+                  class="product-gallery__zoom-trigger"
+                  data-gallery-lightbox-trigger
+                  data-full-image="./assets/product-2.jpg"
+                  aria-label="View larger image 5 of 5"
+                >
+                  <img
+                    src="./assets/product-2.jpg"
+                    alt="ETERNAL MOTION White Full Back Architectural Composition"
+                    loading="lazy"
+                    width="1200"
+                    height="1500"
+                    class="product-gallery__image"
+                    data-media-image
+                  >
+                  <span class="product-gallery__zoom-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <!-- BLACK 001 Front view -->
+              <div class="product-gallery__item is-color-hidden" data-media-id="med-b1" data-index="5" data-color="black" data-depth-item>
+                <div class="gallery-item-number" aria-hidden="true">
+                  <span class="gallery-item-number__dot"></span>
+                  <span class="gallery-item-number__code">001</span>
+                </div>
+                <button
+                  type="button"
+                  class="product-gallery__zoom-trigger"
+                  data-gallery-lightbox-trigger
+                  data-full-image="./assets/product-black-1.jpg"
+                  aria-label="View larger image 1 of 5"
+                >
+                  <img
+                    src="./assets/product-black-1.jpg"
+                    alt="ETERNAL MOTION Black Front View — Unbranded Clean Collar"
+                    loading="lazy"
+                    width="1200"
+                    height="1500"
+                    class="product-gallery__image"
+                    data-media-image
+                  >
+                  <span class="product-gallery__zoom-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <!-- BLACK 002 Back graphic -->
+              <div class="product-gallery__item is-color-hidden" data-media-id="med-b2" data-index="6" data-color="black" data-depth-item>
+                <div class="gallery-item-number" aria-hidden="true">
+                  <span class="gallery-item-number__dot"></span>
+                  <span class="gallery-item-number__code">002</span>
+                </div>
+                <button
+                  type="button"
+                  class="product-gallery__zoom-trigger"
+                  data-gallery-lightbox-trigger
+                  data-full-image="./assets/product-black-2.jpg"
+                  aria-label="View larger image 2 of 5"
+                >
+                  <img
+                    src="./assets/product-black-2.jpg"
+                    alt="ETERNAL MOTION Black Back Graphic with Orbital Forms"
+                    loading="lazy"
+                    width="1200"
+                    height="1500"
+                    class="product-gallery__image"
+                    data-media-image
+                  >
+                  <span class="product-gallery__zoom-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <!-- BLACK 003 Lifestyle editorial -->
+              <div class="product-gallery__item is-color-hidden" data-media-id="med-b3" data-index="7" data-color="black" data-depth-item>
+                <div class="gallery-item-number" aria-hidden="true">
+                  <span class="gallery-item-number__dot"></span>
+                  <span class="gallery-item-number__code">003</span>
+                </div>
+                <button
+                  type="button"
+                  class="product-gallery__zoom-trigger"
+                  data-gallery-lightbox-trigger
+                  data-full-image="./assets/product-black-3.jpg"
+                  aria-label="View larger image 3 of 5"
+                >
+                  <img
+                    src="./assets/product-black-3.jpg"
+                    alt="ETERNAL MOTION Black Lifestyle Editorial"
+                    loading="lazy"
+                    width="1200"
+                    height="1500"
+                    class="product-gallery__image"
+                    data-media-image
+                  >
+                  <span class="product-gallery__zoom-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <!-- BLACK 004 Chest detail -->
+              <div class="product-gallery__item is-color-hidden" data-media-id="med-b4" data-index="8" data-color="black" data-depth-item>
+                <div class="gallery-item-number" aria-hidden="true">
+                  <span class="gallery-item-number__dot"></span>
+                  <span class="gallery-item-number__code">004</span>
+                </div>
+                <button
+                  type="button"
+                  class="product-gallery__zoom-trigger"
+                  data-gallery-lightbox-trigger
+                  data-full-image="./assets/product-black-1.jpg"
+                  aria-label="View larger image 4 of 5"
+                >
+                  <img
+                    src="./assets/product-black-1.jpg"
+                    alt="ETERNAL MOTION Black Left Chest DTF Emblem"
+                    loading="lazy"
+                    width="1200"
+                    height="1500"
+                    class="product-gallery__image"
+                    data-media-image
+                  >
+                  <span class="product-gallery__zoom-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <!-- BLACK 005 Wide architectural back composition -->
+              <div class="product-gallery__item product-gallery__item--wide is-color-hidden" data-media-id="med-b5" data-index="9" data-color="black" data-depth-item>
+                <div class="gallery-item-number" aria-hidden="true">
+                  <span class="gallery-item-number__dot"></span>
+                  <span class="gallery-item-number__code">005</span>
+                </div>
+                <button
+                  type="button"
+                  class="product-gallery__zoom-trigger"
+                  data-gallery-lightbox-trigger
+                  data-full-image="./assets/product-black-2.jpg"
+                  aria-label="View larger image 5 of 5"
+                >
+                  <img
+                    src="./assets/product-black-2.jpg"
+                    alt="ETERNAL MOTION Black Full Back Architectural Composition"
+                    loading="lazy"
+                    width="1200"
+                    height="1500"
+                    class="product-gallery__image"
+                    data-media-image
+                  >
+                  <span class="product-gallery__zoom-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Mobile Slider Controls & Technical Counter -->
+            <div class="product-gallery__mobile-bar">
+              <button type="button" class="gallery-nav-btn gallery-nav-btn--prev" data-gallery-prev aria-label="Previous image">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+              </button>
+              <span class="product-gallery__counter" data-gallery-counter>
+                <span class="gallery-counter__dot" aria-hidden="true"></span>
+                <span data-gallery-current>01</span> / <span data-gallery-total>05</span>
+              </span>
+              <button type="button" class="gallery-nav-btn gallery-nav-btn--next" data-gallery-next aria-label="Next image">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Mobile Thumbnails Strip -->
+            <div class="product-gallery__thumbs" data-gallery-thumbs role="tablist" aria-label="Product thumbnails">
+              <!-- White thumbs -->
+              <button type="button" class="product-gallery__thumb is-selected" data-thumb-index="0" data-color="white" aria-label="Thumbnail 1 of 5">
+                <img src="./assets/product-1.jpg" alt="White Thumbnail 1" width="80" height="100">
+              </button>
+              <button type="button" class="product-gallery__thumb" data-thumb-index="1" data-color="white" aria-label="Thumbnail 2 of 5">
+                <img src="./assets/product-2.jpg" alt="White Thumbnail 2" width="80" height="100">
+              </button>
+              <button type="button" class="product-gallery__thumb" data-thumb-index="2" data-color="white" aria-label="Thumbnail 3 of 5">
+                <img src="./assets/product-3.jpg" alt="White Thumbnail 3" width="80" height="100">
+              </button>
+              <button type="button" class="product-gallery__thumb" data-thumb-index="3" data-color="white" aria-label="Thumbnail 4 of 5">
+                <img src="./assets/product-1.jpg" alt="White Thumbnail 4" width="80" height="100">
+              </button>
+              <button type="button" class="product-gallery__thumb" data-thumb-index="4" data-color="white" aria-label="Thumbnail 5 of 5">
+                <img src="./assets/product-2.jpg" alt="White Thumbnail 5" width="80" height="100">
+              </button>
+              <!-- Black thumbs -->
+              <button type="button" class="product-gallery__thumb is-color-hidden" data-thumb-index="5" data-color="black" aria-label="Thumbnail 1 of 5">
+                <img src="./assets/product-black-1.jpg" alt="Black Thumbnail 1" width="80" height="100">
+              </button>
+              <button type="button" class="product-gallery__thumb is-color-hidden" data-thumb-index="6" data-color="black" aria-label="Thumbnail 2 of 5">
+                <img src="./assets/product-black-2.jpg" alt="Black Thumbnail 2" width="80" height="100">
+              </button>
+              <button type="button" class="product-gallery__thumb is-color-hidden" data-thumb-index="7" data-color="black" aria-label="Thumbnail 3 of 5">
+                <img src="./assets/product-black-3.jpg" alt="Black Thumbnail 3" width="80" height="100">
+              </button>
+              <button type="button" class="product-gallery__thumb is-color-hidden" data-thumb-index="8" data-color="black" aria-label="Thumbnail 4 of 5">
+                <img src="./assets/product-black-1.jpg" alt="Black Thumbnail 4" width="80" height="100">
+              </button>
+              <button type="button" class="product-gallery__thumb is-color-hidden" data-thumb-index="9" data-color="black" aria-label="Thumbnail 5 of 5">
+                <img src="./assets/product-black-2.jpg" alt="Black Thumbnail 5" width="80" height="100">
+              </button>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: Viewport-Anchored Sticky Technical Luxury Purchase Panel -->
+          <div class="product-info product-info--sticky">
+            
+            <!-- Category Eyebrow -->
+            <div class="product-info__eyebrow-row">
+              <span class="product-info__category-tag">T-SHIRTS</span>
+              <div class="product-info__badges">
+                <span class="badge badge--dark">SHOWROOM EDITION</span>
+              </div>
+            </div>
+
+            <!-- Product Title -->
+            <h1 class="product-info__title">
+              ETERNAL MOTION &mdash;<br>Oversized Graphic T-Shirt
+            </h1>
+
+            <!-- Price Lockup -->
+            <div class="product-info__price-wrapper">
+              <div class="price-container" data-price-container>
+                <span class="price-item--regular" data-price-display>₹1,499.00</span>
+                <span class="price-item--compare visually-hidden" data-price-compare-display></span>
+              </div>
+              <div class="product-info__price-meta">
+                <span class="product-info__tax-note">Incl. of all taxes</span>
+                <span class="product-info__shipping-flag">
+                  <span class="shipping-pulse-dot" aria-hidden="true"></span>
+                  Prompt Pan-India Dispatch
+                </span>
+              </div>
+            </div>
+
+            <!-- Narrative Teaser Quote & Anchor Link -->
+            <div class="product-info__narrative-teaser">
+              <p class="narrative-teaser__lead">Always in motion. Further ahead.</p>
+              <p class="narrative-teaser__body">
+                ETERNAL MOTION explores movement, direction and the space between where you are and where you're going. Built on a clean white oversized silhouette with high-density DTF graphics.
+              </p>
+              <button type="button" class="product-details-link-btn" data-scroll-to-details>
+                <span>PRODUCT DETAILS</span>
+                <span class="product-details-link-arrow" aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+
+            <!-- Purchase Form -->
+            <form id="product-form" class="product-form" action="/cart/add" method="post">
+              <input type="hidden" name="id" value="44289012345" data-master-variant-id>
+
+              <!-- Variant Selectors -->
+              <div class="variant-selectors">
+                
+                <!-- Color Selector Group -->
+                <div class="variant-selector-group" data-option-index="0">
+                  <div class="variant-selector-group__header">
+                    <span class="variant-selector-group__label">
+                      COLOUR: <span class="variant-selector-group__selected-val" data-option-selected-label>WHITE</span>
+                    </span>
+                  </div>
+                  <div class="variant-options variant-options--color">
+                    <label class="variant-option-label" for="Option-Color-White">
+                      <input
+                        type="radio"
+                        id="Option-Color-White"
+                        class="variant-radio-input visually-hidden"
+                        name="options[Color]"
+                        value="White"
+                        checked
+                      >
+                      <span class="variant-color-swatch variant-color-swatch--circle" style="background-color: #FFFFFF;" title="White"></span>
+                    </label>
+                    <label class="variant-option-label" for="Option-Color-Black">
+                      <input
+                        type="radio"
+                        id="Option-Color-Black"
+                        class="variant-radio-input visually-hidden"
+                        name="options[Color]"
+                        value="Black"
+                      >
+                      <span class="variant-color-swatch variant-color-swatch--circle" style="background-color: #141413;" title="Black"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Size Selector Group -->
+                <div class="variant-selector-group" data-option-index="1">
+                  <div class="variant-selector-group__header">
+                    <span class="variant-selector-group__label">
+                      SIZE: <span class="variant-selector-group__selected-val" data-option-selected-label>L</span>
+                    </span>
+                    <button type="button" class="size-guide-trigger" data-size-guide-open aria-haspopup="dialog">
+                      <span>FIND MY SIZE</span>
+                    </button>
+                  </div>
+                  <div class="variant-options">
+                    <label class="variant-option-label" for="Option-Size-XS">
+                      <input type="radio" id="Option-Size-XS" class="variant-radio-input visually-hidden" name="options[Size]" value="XS">
+                      <span class="variant-radio-btn">XS</span>
+                    </label>
+                    <label class="variant-option-label" for="Option-Size-S">
+                      <input type="radio" id="Option-Size-S" class="variant-radio-input visually-hidden" name="options[Size]" value="S">
+                      <span class="variant-radio-btn">S</span>
+                    </label>
+                    <label class="variant-option-label" for="Option-Size-M">
+                      <input type="radio" id="Option-Size-M" class="variant-radio-input visually-hidden" name="options[Size]" value="M">
+                      <span class="variant-radio-btn">M</span>
+                    </label>
+                    <label class="variant-option-label" for="Option-Size-L">
+                      <input type="radio" id="Option-Size-L" class="variant-radio-input visually-hidden" name="options[Size]" value="L" checked>
+                      <span class="variant-radio-btn">L</span>
+                    </label>
+                    <label class="variant-option-label" for="Option-Size-XL">
+                      <input type="radio" id="Option-Size-XL" class="variant-radio-input visually-hidden" name="options[Size]" value="XL">
+                      <span class="variant-radio-btn">XL</span>
+                    </label>
+                    <label class="variant-option-label" for="Option-Size-XXL">
+                      <input type="radio" id="Option-Size-XXL" class="variant-radio-input visually-hidden" name="options[Size]" value="XXL">
+                      <span class="variant-radio-btn">XXL</span>
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Variants JSON helper for variant manager -->
+              <script type="application/json" data-variants-json>
+                [
+                  {"id": 44289012341, "title": "White / XS", "price": 149900, "available": true, "options": ["White", "XS"], "featured_image": {"id": "med-1", "src": "./assets/product-1.jpg"}},
+                  {"id": 44289012342, "title": "White / S", "price": 149900, "available": true, "options": ["White", "S"], "featured_image": {"id": "med-1", "src": "./assets/product-1.jpg"}},
+                  {"id": 44289012343, "title": "White / M", "price": 149900, "available": true, "options": ["White", "M"], "featured_image": {"id": "med-1", "src": "./assets/product-1.jpg"}},
+                  {"id": 44289012344, "title": "White / L", "price": 149900, "available": true, "options": ["White", "L"], "featured_image": {"id": "med-1", "src": "./assets/product-1.jpg"}},
+                  {"id": 44289012345, "title": "White / XL", "price": 149900, "available": true, "options": ["White", "XL"], "featured_image": {"id": "med-1", "src": "./assets/product-1.jpg"}},
+                  {"id": 44289012346, "title": "White / XXL", "price": 149900, "available": true, "options": ["White", "XXL"], "featured_image": {"id": "med-1", "src": "./assets/product-1.jpg"}},
+                  {"id": 44289012351, "title": "Black / XS", "price": 149900, "available": true, "options": ["Black", "XS"], "featured_image": {"id": "med-b1", "src": "./assets/product-black-1.jpg"}},
+                  {"id": 44289012352, "title": "Black / S", "price": 149900, "available": true, "options": ["Black", "S"], "featured_image": {"id": "med-b1", "src": "./assets/product-black-1.jpg"}},
+                  {"id": 44289012353, "title": "Black / M", "price": 149900, "available": true, "options": ["Black", "M"], "featured_image": {"id": "med-b1", "src": "./assets/product-black-1.jpg"}},
+                  {"id": 44289012354, "title": "Black / L", "price": 149900, "available": true, "options": ["Black", "L"], "featured_image": {"id": "med-b1", "src": "./assets/product-black-1.jpg"}},
+                  {"id": 44289012355, "title": "Black / XL", "price": 149900, "available": true, "options": ["Black", "XL"], "featured_image": {"id": "med-b1", "src": "./assets/product-black-1.jpg"}},
+                  {"id": 44289012356, "title": "Black / XXL", "price": 149900, "available": true, "options": ["Black", "XXL"], "featured_image": {"id": "med-b1", "src": "./assets/product-black-1.jpg"}}
+                ]
+              </script>
+
+              <!-- Purchase Controls -->
+              <div class="product-actions product-actions--editorial">
+                <button
+                  type="submit"
+                  name="add"
+                  class="btn btn--primary btn--add-to-bag btn--full"
+                  data-add-to-bag-btn
+                  data-add-to-cart-button
+                  id="addBagBtn"
+                >
+                  <span class="btn-text-wrap" data-btn-text>ADD TO BAG</span>
+                  <span class="btn-hover-arrow" aria-hidden="true">&rarr;</span>
+                </button>
+              </div>
+
+              <div class="dynamic-checkout-wrapper">
+                <button type="button" class="btn btn--full btn--outline" id="buyNowBtn" style="font-family: var(--font-mono); font-size: 0.86rem; letter-spacing: 0.12em; height: 50px;">
+                  BUY IT NOW
+                </button>
+              </div>
+
+            </form>
+
+            <!-- Editorial Accordions with Plus to Minus Rotation -->
+            <div class="editorial-tabs-accordion" data-editorial-tabs id="ProductDetailsAccordion">
+              
+              <!-- 1. Description -->
+              <div class="accordion__item is-open" data-accordion-item>
+                <button type="button" class="accordion__header" data-accordion-header aria-expanded="true">
+                  <span class="accordion__title">DESCRIPTION</span>
+                  <span class="accordion__icon-wrap">
+                    <span class="accordion__icon-line accordion__icon-line--h"></span>
+                    <span class="accordion__icon-line accordion__icon-line--v"></span>
+                  </span>
+                </button>
+                <div class="accordion__content" data-accordion-content>
+                  <div class="prose">
+                    <p><strong>ETERNAL MOTION</strong></p>
+                    <p>Always in motion. Further ahead.</p>
+                    <p>
+                      ETERNAL MOTION explores movement, direction and the space between where you are and where you're going.
+                    </p>
+                    <p>
+                      Built on a clean white oversized silhouette, the piece features a highly detailed back graphic combining orbital forms, celestial elements, technical markings and the SEVOLF insignia. A smaller matching emblem sits on the left chest, creating a visual connection between the front and back.
+                    </p>
+                    <p>
+                      The result is a statement piece that feels technical without losing its restraint.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. Size & Fit -->
+              <div class="accordion__item" data-accordion-item>
+                <button type="button" class="accordion__header" data-accordion-header aria-expanded="false">
+                  <span class="accordion__title">SIZE &amp; FIT</span>
+                  <span class="accordion__icon-wrap">
+                    <span class="accordion__icon-line accordion__icon-line--h"></span>
+                    <span class="accordion__icon-line accordion__icon-line--v"></span>
+                  </span>
+                </button>
+                <div class="accordion__content" data-accordion-content>
+                  <div class="prose">
+                    <p>Unisex oversized / relaxed fit.</p>
+                    <p>Dropped shoulders.<br>Extended silhouette.</p>
+                    <p>Sizes XS–XXL.</p>
+                    <button type="button" class="btn btn--outline" style="margin-top: 1.25rem; font-size: 0.78rem; padding: 0.65rem 1.4rem; letter-spacing: 0.08em; text-transform: uppercase;" data-size-guide-open>
+                      View Complete Size Matrix
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Material & Care -->
+              <div class="accordion__item" data-accordion-item>
+                <button type="button" class="accordion__header" data-accordion-header aria-expanded="false">
+                  <span class="accordion__title">MATERIAL &amp; CARE</span>
+                  <span class="accordion__icon-wrap">
+                    <span class="accordion__icon-line accordion__icon-line--h"></span>
+                    <span class="accordion__icon-line accordion__icon-line--v"></span>
+                  </span>
+                </button>
+                <div class="accordion__content" data-accordion-content>
+                  <div class="prose">
+                    <ul class="editorial-specs-list" style="list-style: none; padding: 0; margin-bottom: 1.25rem;">
+                      <li style="margin-bottom: 0.4rem;"><strong>Composition:</strong> 100% combed cotton</li>
+                      <li style="margin-bottom: 0.4rem;"><strong>Weight:</strong> 180 GSM high-density knit</li>
+                      <li style="margin-bottom: 0.4rem;"><strong>Neckline:</strong> Clean unbranded interior collar finish</li>
+                      <li style="margin-bottom: 0.4rem;"><strong>Graphic:</strong> Direct-to-Film (DTF) high-definition transfer</li>
+                    </ul>
+                    <p><strong>Care Instructions:</strong></p>
+                    <ul class="editorial-specs-list" style="list-style: disc; margin-left: 1.25rem;">
+                      <li>Wash inside out in cold water</li>
+                      <li>Use a gentle cycle with like colors</li>
+                      <li>Dry on low heat or flat dry in shade</li>
+                      <li>Do not iron directly over the print</li>
+                      <li>Turn inside out before ironing</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. Shipping & Returns -->
+              <div class="accordion__item" data-accordion-item>
+                <button type="button" class="accordion__header" data-accordion-header aria-expanded="false">
+                  <span class="accordion__title">SHIPPING &amp; RETURNS</span>
+                  <span class="accordion__icon-wrap">
+                    <span class="accordion__icon-line accordion__icon-line--h"></span>
+                    <span class="accordion__icon-line accordion__icon-line--v"></span>
+                  </span>
+                </button>
+                <div class="accordion__content" data-accordion-content>
+                  <div class="prose">
+                    <p>Complimentary standard shipping on all orders over ₹1,499. Orders are processed within 24–48 business hours with end-to-end express courier tracking across India.</p>
+                    <p style="margin-top: 0.65rem;">Hassle-free 7-day return and exchange window for unworn items with original archival tags intact.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Technical Specification Strip -->
+    <div class="product-spec-strip" aria-label="Technical Specifications">
+      <div class="container">
+        <div class="product-spec-strip__inner">
+          <span class="spec-strip__item">180 GSM</span>
+          <span class="spec-strip__divider" aria-hidden="true">&bull;</span>
+          <span class="spec-strip__item">100% COTTON</span>
+          <span class="spec-strip__divider" aria-hidden="true">&bull;</span>
+          <span class="spec-strip__item">OVERSIZED FIT</span>
+          <span class="spec-strip__divider" aria-hidden="true">&bull;</span>
+          <span class="spec-strip__item">DTF GRAPHIC</span>
+          <span class="spec-strip__divider" aria-hidden="true">&bull;</span>
+          <span class="spec-strip__item" data-spec-color>WHITE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Large Full-Width Editorial Story Section (Dark Digital Showroom) -->
+    <section class="pdp-editorial-story" aria-label="Editorial Narrative">
+      <div class="pdp-editorial-story__container">
+        <div class="pdp-editorial-story__header" data-scroll-reveal>
+          <span class="pdp-editorial-story__eyebrow">ARCHIVE CONCEPT // 001</span>
+          <h2 class="pdp-editorial-story__title">
+            <span class="story-title-line">ETERNAL</span>
+            <span class="story-title-line">MOTION</span>
+          </h2>
+          <div class="pdp-editorial-story__line" aria-hidden="true"></div>
+          <p class="pdp-editorial-story__lead">
+            ALWAYS IN MOTION.<br>FURTHER AHEAD.
+          </p>
+        </div>
+
+        <div class="pdp-editorial-story__visual" data-scroll-reveal>
+          <div class="story-media-frame" data-parallax-frame>
+            <img
+              src="./assets/product-2.jpg"
+              alt="SEVOLF Eternal Motion Silhouette"
+              loading="lazy"
+              class="story-media-image"
+              data-parallax-img
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Language Choreography Section -->
+    <section class="pdp-design-language" aria-label="Design Philosophy">
+      <div class="container container--narrow">
+        <div class="design-language__grid" data-choreography-grid>
+          <div class="design-language__item" data-choreo-word>
+            <span class="design-language__index">01</span>
+            <h3 class="design-language__word">MOVEMENT</h3>
+          </div>
+          <div class="design-language__item" data-choreo-word>
+            <span class="design-language__index">02</span>
+            <h3 class="design-language__word">DIRECTION</h3>
+          </div>
+          <div class="design-language__item" data-choreo-word>
+            <span class="design-language__index">03</span>
+            <h3 class="design-language__word">SPACE</h3>
+          </div>
+          <div class="design-language__item" data-choreo-word>
+            <span class="design-language__index">04</span>
+            <h3 class="design-language__word">POSSIBILITY</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- "YOU MAY ALSO LIKE" Horizontal Editorial Carousel -->
+    <section class="product-recommendations section-spacing" aria-labelledby="RecommendationsHeading" data-recommendations-section>
+      <div class="container">
+        <div class="recommendations__header" data-scroll-reveal>
+          <div>
+            <span class="recommendations__subheading">ARCHIVE SELECTION</span>
+            <h2 id="RecommendationsHeading" class="recommendations__title">YOU MAY ALSO LIKE</h2>
+          </div>
+          <div class="recommendations__controls">
+            <button type="button" class="rec-carousel-btn rec-carousel-btn--prev" id="recPrevBtn" aria-label="Previous products">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+            </button>
+            <button type="button" class="rec-carousel-btn rec-carousel-btn--next" id="recNextBtn" aria-label="Next products">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="recommendations-carousel-track" id="recCarousel" data-rec-track>
+          
+          <!-- Recommendation 1 -->
+          <div class="recommendations-carousel-item" data-rec-card>
+            <div class="product-card">
+              <div class="product-card__media-wrapper">
+                <div class="product-card__badges">
+                  <span class="badge badge--dark">ARCHIVE</span>
+                </div>
+                <a href="#" class="product-card__link" aria-label="UNKNOWN TERRITORY">
+                  <img src="./assets/product-1.jpg" alt="UNKNOWN TERRITORY" class="product-card__image" loading="lazy" width="600" height="750">
+                </a>
+                <div class="product-card__quick-add">
+                  <button type="button" class="btn btn--full btn--white" style="padding: 0.75rem 1rem; font-size: 0.78rem;" onclick="handleQuickAdd('UNKNOWN TERRITORY')">
+                    QUICK ADD +
+                  </button>
+                </div>
+              </div>
+              <div class="product-card__info" style="padding: 1rem 0;">
+                <h4 style="font-family: var(--font-heading); font-size: 1rem; margin: 0 0 0.25rem;">UNKNOWN TERRITORY</h4>
+                <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0 0 0.5rem;">Oversized Graphic T-Shirt</p>
+                <div class="product-card__price-row">
+                  <span style="font-weight: 700; font-family: var(--font-body);">₹1,499.00</span>
+                  <button type="button" class="product-card__plus-btn" onclick="handleQuickAdd('UNKNOWN TERRITORY')" aria-label="Add to bag">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recommendation 2 -->
+          <div class="recommendations-carousel-item" data-rec-card>
+            <div class="product-card">
+              <div class="product-card__media-wrapper">
+                <a href="#" class="product-card__link" aria-label="SEVOLF / ARCH">
+                  <img src="./assets/product-2.jpg" alt="SEVOLF / ARCH" class="product-card__image" loading="lazy" width="600" height="750">
+                </a>
+                <div class="product-card__quick-add">
+                  <button type="button" class="btn btn--full btn--white" style="padding: 0.75rem 1rem; font-size: 0.78rem;" onclick="handleQuickAdd('SEVOLF / ARCH')">
+                    QUICK ADD +
+                  </button>
+                </div>
+              </div>
+              <div class="product-card__info" style="padding: 1rem 0;">
+                <h4 style="font-family: var(--font-heading); font-size: 1rem; margin: 0 0 0.25rem;">SEVOLF / ARCH</h4>
+                <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0 0 0.5rem;">Heavyweight Studio Tee</p>
+                <div class="product-card__price-row">
+                  <span style="font-weight: 700; font-family: var(--font-body);">₹1,499.00</span>
+                  <button type="button" class="product-card__plus-btn" onclick="handleQuickAdd('SEVOLF / ARCH')" aria-label="Add to bag">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recommendation 3 -->
+          <div class="recommendations-carousel-item" data-rec-card>
+            <div class="product-card">
+              <div class="product-card__media-wrapper">
+                <a href="#" class="product-card__link" aria-label="THE NORTH WITHIN">
+                  <img src="./assets/product-3.jpg" alt="THE NORTH WITHIN" class="product-card__image" loading="lazy" width="600" height="750">
+                </a>
+                <div class="product-card__quick-add">
+                  <button type="button" class="btn btn--full btn--white" style="padding: 0.75rem 1rem; font-size: 0.78rem;" onclick="handleQuickAdd('THE NORTH WITHIN')">
+                    QUICK ADD +
+                  </button>
+                </div>
+              </div>
+              <div class="product-card__info" style="padding: 1rem 0;">
+                <h4 style="font-family: var(--font-heading); font-size: 1rem; margin: 0 0 0.25rem;">THE NORTH WITHIN</h4>
+                <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0 0 0.5rem;">Relaxed Graphic T-Shirt</p>
+                <div class="product-card__price-row">
+                  <span style="font-weight: 700; font-family: var(--font-body);">₹1,499.00</span>
+                  <button type="button" class="product-card__plus-btn" onclick="handleQuickAdd('THE NORTH WITHIN')" aria-label="Add to bag">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recommendation 4 -->
+          <div class="recommendations-carousel-item" data-rec-card>
+            <div class="product-card">
+              <div class="product-card__media-wrapper">
+                <div class="product-card__badges">
+                  <span class="badge badge--dark">HEAVYWEIGHT</span>
+                </div>
+                <a href="#" class="product-card__link" aria-label="AUTONOMOUS CREWNECK">
+                  <img src="./assets/product-1.jpg" alt="AUTONOMOUS CREWNECK" class="product-card__image" loading="lazy" width="600" height="750">
+                </a>
+                <div class="product-card__quick-add">
+                  <button type="button" class="btn btn--full btn--white" style="padding: 0.75rem 1rem; font-size: 0.78rem;" onclick="handleQuickAdd('AUTONOMOUS CREWNECK')">
+                    QUICK ADD +
+                  </button>
+                </div>
+              </div>
+              <div class="product-card__info" style="padding: 1rem 0;">
+                <h4 style="font-family: var(--font-heading); font-size: 1rem; margin: 0 0 0.25rem;">AUTONOMOUS CREWNECK</h4>
+                <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0 0 0.5rem;">400 GSM Technical Sweatshirt</p>
+                <div class="product-card__price-row">
+                  <span style="font-weight: 700; font-family: var(--font-body);">₹3,290.00</span>
+                  <button type="button" class="product-card__plus-btn" onclick="handleQuickAdd('AUTONOMOUS CREWNECK')" aria-label="Add to bag">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEVOLF Brand World (3 Editorial Tiles + 3-Point Service Bar) -->
+    <section class="sevolf-brand-world section-spacing" aria-labelledby="BrandWorldHeading">
+      <div class="container">
+        <div class="brand-world__header" data-scroll-reveal>
+          <span class="brand-world__eyebrow">EDITORIAL UNIVERSE</span>
+          <h2 id="BrandWorldHeading" class="brand-world__brand-title">SEVOLF</h2>
+        </div>
+
+        <div class="brand-world__grid">
+          <!-- Tile 1 -->
+          <a href="#" class="brand-world-tile" data-scroll-reveal>
+            <div class="brand-world-tile__backdrop brand-world-tile__backdrop--universe" style="background-image: url('./assets/product-1.jpg');"></div>
+            <div class="brand-world-tile__overlay"></div>
+            <div class="brand-world-tile__content">
+              <span class="brand-world-tile__tag">01 // IDENTITY</span>
+              <h3 class="brand-world-tile__title">OUR UNIVERSE</h3>
+              <span class="brand-world-tile__action">
+                <span>EXPLORE</span>
+                <span class="brand-world-tile__arrow">&rarr;</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Tile 2 -->
+          <a href="#" class="brand-world-tile" data-scroll-reveal>
+            <div class="brand-world-tile__backdrop brand-world-tile__backdrop--journal" style="background-image: url('./assets/product-2.jpg');"></div>
+            <div class="brand-world-tile__overlay"></div>
+            <div class="brand-world-tile__content">
+              <span class="brand-world-tile__tag">02 // ESSAYS</span>
+              <h3 class="brand-world-tile__title">THE JOURNAL</h3>
+              <span class="brand-world-tile__action">
+                <span>READ</span>
+                <span class="brand-world-tile__arrow">&rarr;</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Tile 3 -->
+          <a href="#" class="brand-world-tile" data-scroll-reveal>
+            <div class="brand-world-tile__backdrop brand-world-tile__backdrop--ordinary" style="background-image: url('./assets/product-3.jpg');"></div>
+            <div class="brand-world-tile__overlay"></div>
+            <div class="brand-world-tile__content">
+              <span class="brand-world-tile__tag">03 // ARCHIVE</span>
+              <h3 class="brand-world-tile__title">BEYOND ORDINARY</h3>
+              <span class="brand-world-tile__action">
+                <span>DISCOVER</span>
+                <span class="brand-world-tile__arrow">&rarr;</span>
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 3-Point Service Bar -->
+        <div class="sevolf-service-strip" data-scroll-reveal>
+          <div class="service-strip__item">
+            <span class="service-strip__num">01</span>
+            <div>
+              <span class="service-strip__heading">FREE SHIPPING</span>
+              <span class="service-strip__sub">Complimentary express shipping on pan-India orders over ₹1,499.</span>
+            </div>
+          </div>
+          <div class="service-strip__item">
+            <span class="service-strip__num">02</span>
+            <div>
+              <span class="service-strip__heading">EASY RETURNS</span>
+              <span class="service-strip__sub">7-day seamless exchange window for size adjustments with tag intact.</span>
+            </div>
+          </div>
+          <div class="service-strip__item">
+            <span class="service-strip__num">03</span>
+            <div>
+              <span class="service-strip__heading">SECURE CHECKOUT</span>
+              <span class="service-strip__sub">Encrypted payments via UPI, credit cards, debit cards and netbanking.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Mobile Sticky Bottom Purchase Bar -->
+  <aside class="mobile-sticky-purchase-bar" id="MobileStickyPurchaseBar" data-mobile-sticky-bar aria-label="Quick Purchase Bar">
+    <div class="mobile-sticky-bar__inner">
+      <div class="mobile-sticky-bar__info">
+        <span class="mobile-sticky-bar__title">ETERNAL MOTION</span>
+        <span class="mobile-sticky-bar__price">₹1,499.00</span>
+      </div>
+      <button type="button" class="btn btn--primary mobile-sticky-bar__btn" id="mobileStickyAddBtn">
+        ADD TO BAG
+      </button>
+    </div>
+  </aside>
+
+  <!-- Minimal Premium Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 48px; margin-bottom: 60px;">
+        <div>
+          <h3 style="font-family: var(--font-heading); font-size: 24px; letter-spacing: 0.1em; margin: 0 0 16px; color: #FAF8F5;">SEVOLF</h3>
+          <p style="font-size: 13px; color: #A09E9B; line-height: 1.7; max-width: 280px;">
+            A contemporary brand exploring the intersections of creativity, technology and culture. For those who move further.
+          </p>
+        </div>
+        <div>
+          <h4 style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--color-brand-orange); margin: 0 0 16px;">SHOP</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; line-height: 2.2;">
+            <li><a href="#" style="color: #FAF8F5; text-decoration: none;">T-Shirts</a></li>
+            <li><a href="#" style="color: #FAF8F5; text-decoration: none;">Digital Products</a></li>
+            <li><a href="#" style="color: #FAF8F5; text-decoration: none;">Accessories</a></li>
+            <li><a href="#" style="color: #FAF8F5; text-decoration: none;">All Products</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--color-brand-orange); margin: 0 0 16px;">SUPPORT</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; line-height: 2.2;">
+            <li><a href="#" style="color: #FAF8F5; text-decoration: none;">Contact</a></li>
+            <li><a href="#" style="color: #FAF8F5; text-decoration: none;">Shipping</a></li>
+            <li><a href="#" style="color: #FAF8F5; text-decoration: none;">Returns</a></li>
+            <li><a href="#" style="color: #FAF8F5; text-decoration: none;">FAQs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--color-brand-orange); margin: 0 0 16px;">NEWSLETTER</h4>
+          <p style="font-size: 13px; color: #A09E9B; margin: 0 0 16px;">Join our universe.</p>
+          <div style="display: flex; border-bottom: 1px solid #FAF8F5;">
+            <input type="email" placeholder="Enter your email" style="background: transparent; border: none; padding: 8px 0; color: #FAF8F5; font-size: 13px; outline: none; width: 100%;">
+            <button type="button" style="background: none; border: none; color: #FAF8F5; font-size: 16px; cursor: pointer;">&rarr;</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 11px; font-family: var(--font-mono); color: #A09E9B;">
+        <span>&copy; 2026 SEVOLF. ALL RIGHTS RESERVED.</span>
+        <span>CURRENCY: INR (₹)</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Accessible Size Guide Modal -->
+  <div
+    class="modal-backdrop"
+    id="SizeGuideModal"
+    data-size-guide-modal
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="SizeGuideModalTitle"
+    hidden
+  >
+    <div class="modal-dialog">
+      <div class="modal-dialog__header">
+        <h3 id="SizeGuideModalTitle" class="modal-dialog__title">SIZE &amp; SILHOUETTE MATRIX</h3>
+        <button type="button" class="modal-close-btn" data-size-guide-close aria-label="Close size guide">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-dialog__body">
+        <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 1rem;">
+          All dimensions specified in inches. Measured flat across the garment.
+        </p>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; margin-top: 8px;">
+            <thead>
+              <tr style="border-bottom: 1.5px solid var(--color-text); text-align: left;">
+                <th style="padding: 10px 8px;">SIZE</th>
+                <th style="padding: 10px 8px;">CHEST</th>
+                <th style="padding: 10px 8px;">LENGTH</th>
+                <th style="padding: 10px 8px;">SHOULDER</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--color-border);"><td style="padding: 10px 8px;">XS</td><td>42"</td><td>26.5"</td><td>21.5"</td></tr>
+              <tr style="border-bottom: 1px solid var(--color-border);"><td style="padding: 10px 8px;">S</td><td>44"</td><td>27.5"</td><td>22.5"</td></tr>
+              <tr style="border-bottom: 1px solid var(--color-border);"><td style="padding: 10px 8px;">M</td><td>46"</td><td>28.5"</td><td>23.5"</td></tr>
+              <tr style="border-bottom: 1px solid var(--color-border);"><td style="padding: 10px 8px; font-weight: 700; color: var(--color-brand-orange);">L (Standard)</td><td>48"</td><td>29.5"</td><td>24.5"</td></tr>
+              <tr style="border-bottom: 1px solid var(--color-border);"><td style="padding: 10px 8px;">XL</td><td>50"</td><td>30.5"</td><td>25.5"</td></tr>
+              <tr style="border-bottom: 1px solid var(--color-border);"><td style="padding: 10px 8px;">XXL</td><td>52"</td><td>31.5"</td><td>26.5"</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Zoom Modal -->
+  <div
+    class="modal-backdrop lightbox-backdrop"
+    id="GalleryLightboxModal"
+    data-gallery-lightbox
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image Zoom"
+    hidden
+  >
+    <div class="lightbox-container">
+      <button type="button" class="lightbox-close-btn" data-lightbox-close aria-label="Close zoom">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <img src="" alt="Zoomed view" class="lightbox-image" data-lightbox-img>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-overlay" data-mobile-menu-overlay aria-hidden="true"></div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div
+    class="mobile-nav-drawer"
+    id="MobileNavDrawer"
+    data-mobile-menu
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile Navigation"
+    aria-hidden="true"
+  >
+    <div class="mobile-nav-drawer__header">
+      <span class="mobile-nav-drawer__logo">SEVOLF</span>
+      <button
+        type="button"
+        class="action-btn mobile-nav-drawer__close"
+        data-mobile-menu-close
+        aria-label="Close Navigation"
+        style="background:none; border:none; cursor:pointer; padding:8px; display:flex; align-items:center; justify-content:center; color:var(--color-text);"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-nav-drawer__body">
+      <nav class="mobile-nav-list" role="navigation" aria-label="Mobile Navigation List">
+        <div class="mobile-nav-item">
+          <div class="mobile-nav-item__parent">
+            <a href="#" class="mobile-nav-link is-active">SHOP</a>
+            <button
+              type="button"
+              class="mobile-nav-item__toggle"
+              data-mobile-submenu-toggle
+              aria-expanded="false"
+              aria-label="Toggle submenu for SHOP"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+          </div>
+          <div class="mobile-nav-submenu" data-mobile-submenu>
+            <a href="#" class="mobile-nav-sublink">All T-Shirts</a>
+            <a href="#" class="mobile-nav-sublink">Oversized T-Shirts</a>
+            <a href="#" class="mobile-nav-sublink">Digital Products</a>
+            <a href="#" class="mobile-nav-sublink">Accessories</a>
+          </div>
+        </div>
+
+        <div class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link">BRAND</a>
+        </div>
+
+        <div class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link">JOURNAL</a>
+        </div>
+
+        <div class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link">LOOKBOOK</a>
+        </div>
+
+        <div class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link">ARCHIVE</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="mobile-nav-drawer__footer">
+      <a href="#" class="mobile-nav-footer-link" style="display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--color-text); font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Account</span>
+      </a>
+      <a href="#" class="mobile-nav-footer-link" style="display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--color-text); font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Cart Drawer Overlay & Drawer -->
+  <div class="cart-drawer-overlay" data-cart-drawer-overlay></div>
+  <div class="cart-drawer" data-cart-drawer role="dialog" aria-modal="true" aria-label="Shopping Bag">
+    <div class="cart-drawer__header">
+      <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; letter-spacing: 0.04em;">SHOPPING BAG</h3>
+      <button type="button" class="action-btn" data-cart-drawer-close aria-label="Close cart" style="background: none; border: none; cursor: pointer;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="cart-drawer__items" data-cart-drawer-items>
+      <div id="cartDrawerList">
+        <p style="text-align:center; padding: 3rem 0; color: var(--color-text-muted); font-size: 0.92rem;">Your bag is currently empty.</p>
+      </div>
+    </div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal">
+        <span>SUBTOTAL</span>
+        <span data-cart-drawer-subtotal>₹0.00</span>
+      </div>
+      <p class="cart-drawer__note">
+        Shipping, taxes, and promotion codes calculated at checkout.
+      </p>
+      <a href="#" class="btn btn--full" style="padding: 1rem; text-align: center; text-decoration: none;">
+        CHECKOUT &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="cartToast" style="position:fixed; bottom:24px; right:24px; background:#141413; color:#FAF8F5; border:1px solid rgba(255,255,255,0.15); padding:14px 20px; font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; display:none; align-items:center; gap:12px; z-index:99999; box-shadow:0 12px 30px rgba(0,0,0,0.35);">
+    <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--color-brand-orange);"></span>
+    <span id="toastMsg">ITEM ADDED TO SEVOLF BAG</span>
+  </div>
+
+  <script src="./assets/global.js"></script>
+  <script>
+    // Cart & Direct Checkout Simulation for Static Preview
+    const toast = document.getElementById('cartToast');
+    const toastMsg = document.getElementById('toastMsg');
+    const badge = document.getElementById('cartCountBadge');
+    const cartDrawer = document.querySelector('[data-cart-drawer]');
+    const cartOverlay = document.querySelector('[data-cart-drawer-overlay]');
+    const cartList = document.getElementById('cartDrawerList');
+    const subtotalDisplay = document.querySelector('[data-cart-drawer-subtotal]');
+
+    let cartItemsCount = 0;
+    let cartTotal = 0;
+
+    function openCart() {
+      if (cartDrawer) cartDrawer.classList.add('is-active');
+      if (cartOverlay) cartOverlay.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      if (cartDrawer) cartDrawer.classList.remove('is-active');
+      if (cartOverlay) cartOverlay.classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-cart-drawer-trigger]').forEach(btn => btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openCart();
+    }));
+    document.querySelectorAll('[data-cart-drawer-close]').forEach(btn => btn.addEventListener('click', closeCart));
+    if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+
+    function triggerAdd(title, price = 1499) {
+      cartItemsCount += 1;
+      cartTotal += price;
+      if (badge) badge.textContent = cartItemsCount;
+      if (subtotalDisplay) subtotalDisplay.textContent = '₹' + cartTotal.toLocaleString('en-IN') + '.00';
+
+      const selectedSizeInput = document.querySelector('input[name="options[Size]"]:checked');
+      const selectedSize = selectedSizeInput ? selectedSizeInput.value : 'L';
+      const selectedColorInput = document.querySelector('input[name="options[Color]"]:checked');
+      const selectedColor = selectedColorInput ? selectedColorInput.value : 'WHITE';
+      const variantDesc = `${selectedColor.toUpperCase()} / ${selectedSize}`;
+
+      if (cartList) {
+        cartList.innerHTML = `
+          <div class="cart-drawer__item" style="display: flex; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid var(--color-border);">
+            <img src="./assets/product-1.jpg" alt="${title}" style="width: 72px; height: 90px; object-fit: cover; border-radius: 0;">
+            <div style="flex: 1;">
+              <h4 style="font-family: var(--font-heading); font-size: 0.95rem; margin: 0 0 0.25rem;">${title}</h4>
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0 0 0.5rem; font-family: var(--font-mono);">${variantDesc}</p>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.8rem;">QTY: ${cartItemsCount}</span>
+                <strong style="font-family: var(--font-body); font-size: 0.95rem;">₹${price.toLocaleString('en-IN')}.00</strong>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      if (toast && toastMsg) {
+        toastMsg.textContent = `${title} ADDED TO BAG`;
+        toast.style.display = 'flex';
+        setTimeout(() => { toast.style.display = 'none'; }, 3000);
+      }
+
+      openCart();
+    }
+
+    // Intercept form submit on preview page
+    const pForm = document.getElementById('product-form');
+    if (pForm) {
+      pForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        triggerAdd('ETERNAL MOTION');
+      });
+    }
+
+    const buyNowBtn = document.getElementById('buyNowBtn');
+    if (buyNowBtn) {
+      buyNowBtn.addEventListener('click', () => {
+        triggerAdd('ETERNAL MOTION (EXPRESS CHECKOUT)');
+      });
+    }
+
+    const mobStickyBtn = document.getElementById('mobileStickyAddBtn');
+    if (mobStickyBtn) {
+      mobStickyBtn.addEventListener('click', () => {
+        triggerAdd('ETERNAL MOTION');
+      });
+    }
+
+    window.handleQuickAdd = function(title) {
+      triggerAdd(title);
+    };
+
+    // Carousel arrows navigation
+    const track = document.getElementById('recCarousel');
+    const pBtn = document.getElementById('recPrevBtn');
+    const nBtn = document.getElementById('recNextBtn');
+    if (track && pBtn && nBtn) {
+      pBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -320, behavior: 'smooth' });
+      });
+      nBtn.addEventListener('click', () => {
+        track.scrollBy({ left: 320, behavior: 'smooth' });
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% comment %}
+  Renders clean pagination links
+  Usage: {% render 'pagination', paginate: paginate %}
+{% endcomment %}
+{%- if paginate.parts.size > 0 -%}
+  <nav class="pagination" role="navigation" aria-label="Pagination" style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 3rem;">
+    {%- if paginate.previous -%}
+      <a href="{{ paginate.previous.url }}" class="btn btn--outline" style="padding: 0.5rem 1rem;">&larr; Prev</a>
+    {%- endif -%}
+
+    {%- for part in paginate.parts -%}
+      {%- if part.is_link -%}
+        <a href="{{ part.url }}" class="btn btn--outline" style="padding: 0.5rem 1rem;">{{ part.title }}</a>
+      {%- else -%}
+        {%- if part.title == paginate.current_page -%}
+          <span class="btn" style="padding: 0.5rem 1rem; pointer-events: none;">{{ part.title }}</span>
+        {%- else -%}
+          <span style="padding: 0.5rem 1rem;">{{ part.title }}</span>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if paginate.next -%}
+      <a href="{{ paginate.next.url }}" class="btn btn--outline" style="padding: 0.5rem 1rem;">Next &rarr;</a>
+    {%- endif -%}
+  </nav>
+{%- endif -%}

@@ -1,0 +1,53 @@
+<section class="section-spacing">
+  <div class="container container--narrow">
+    <div class="account-card" data-scroll-reveal>
+      <div class="account-card__header">
+        <h1 class="account-card__title">{{ 'customer.activate_account.title' | t }}</h1>
+        <p class="account-card__subtitle">{{ 'customer.activate_account.subtitle' | t }}</p>
+      </div>
+
+      {%- form 'activate_customer_password' -%}
+        {{ form.errors | default_errors }}
+
+        <div class="form-field">
+          <label for="ActivatePassword" class="form-label">{{ 'customer.activate_account.password' | t }}</label>
+          <input
+            type="password"
+            id="ActivatePassword"
+            name="customer[password]"
+            autocomplete="new-password"
+            required
+            class="form-input"
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="ActivatePasswordConfirm" class="form-label">{{ 'customer.activate_account.password_confirm' | t }}</label>
+          <input
+            type="password"
+            id="ActivatePasswordConfirm"
+            name="customer[password_confirmation]"
+            autocomplete="new-password"
+            required
+            class="form-input"
+          >
+        </div>
+
+        <div class="form-field">
+          <button type="submit" class="btn btn--full">{{ 'customer.activate_account.submit' | t }}</button>
+        </div>
+
+        <div class="account-card__links">
+          <button type="submit" name="decline" class="account-link">{{ 'customer.activate_account.decline' | t }}</button>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Account Activation",
+  "settings": []
+}
+{% endschema %}

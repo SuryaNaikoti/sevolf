@@ -1,0 +1,106 @@
+<section class="section-spacing">
+  <div class="container">
+    <div class="testimonials-header">
+      <span class="testimonials-header__subheading">
+        {{ section.settings.subheading }}
+      </span>
+      <h2 class="testimonials-header__title">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="grid grid--3">
+      {%- for block in section.blocks -%}
+        <div class="testimonial-card" {{ block.shopify_attributes }}>
+          <div>
+            <div class="testimonial-card__stars">
+              ★★★★★
+            </div>
+            <p class="testimonial-card__quote">
+              "{{ block.settings.quote }}"
+            </p>
+          </div>
+          <div class="testimonial-card__author-info">
+            <strong class="testimonial-card__author">{{ block.settings.author }}</strong>
+            <span class="testimonial-card__detail">{{ block.settings.detail }}</span>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Community Perspectives"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Trusted by modern creators & professionals"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "The oversized tee has an unmatched silhouette and heavy drape. Paired with the notion system, Sevolf genuinely redesigned my daily workflow."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Rohan M."
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "label": "Location / Role",
+          "default": "Creative Director, Bangalore"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The oversized tee has an unmatched silhouette and heavy drape. Paired with the notion system, Sevolf genuinely redesigned my daily workflow.",
+            "author": "Rohan M.",
+            "detail": "Creative Director, Bangalore"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Instant delivery for the digital planner bundle was frictionless. The clean layout and typography are world-class.",
+            "author": "Ananya S.",
+            "detail": "Architect & Notion Creator"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Heavyweight ceramics and premium apparel. It's rare to see a contemporary brand nail both tangible goods and digital architecture.",
+            "author": "Vikram K.",
+            "detail": "Product Designer"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,16 @@
+{% comment %}
+  Renders digital product metadata card for instant access, formats & licensing
+  Usage: {% render 'digital-meta', product: product %}
+{% endcomment %}
+<div class="digital-meta-card">
+  <div class="digital-meta-card__header">
+    {% render 'icon', icon: 'download' %}
+    <span>Instant Digital Asset</span>
+  </div>
+  <ul class="digital-meta-card__list">
+    <li>{% render 'icon', icon: 'check' %} Instant download link delivered right after checkout</li>
+    <li>{% render 'icon', icon: 'check' %} Formats included: {{ product.metafields.custom.digital_format | default: "PDF, Notion Template, Canva Link & Assets" }}</li>
+    <li>{% render 'icon', icon: 'check' %} Zero shipping fees & lifetime access to updates</li>
+    <li>{% render 'icon', icon: 'check' %} {{ product.metafields.custom.license | default: "Single-user commercial & personal license" }}</li>
+  </ul>
+</div>

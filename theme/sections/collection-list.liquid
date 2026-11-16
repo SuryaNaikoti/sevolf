@@ -1,0 +1,107 @@
+<section class="section-spacing">
+  <div class="container">
+    <div style="margin-bottom: 2.5rem;">
+      {%- if section.settings.subheading != blank -%}
+        <span style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.5rem; font-weight: 600;">
+          {{ section.settings.subheading }}
+        </span>
+      {%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="grid grid--3">
+      {%- for block in section.blocks -%}
+        {%- assign collection = block.settings.collection -%}
+        <div class="collection-card" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 800 }}"
+              alt="{{ collection.title | default: 'Collection' | escape }}"
+              class="collection-card__image"
+              loading="lazy"
+              width="800"
+              height="1000"
+            >
+          {%- elsif collection.featured_image != blank -%}
+            <img
+              src="{{ collection.featured_image | image_url: width: 800 }}"
+              alt="{{ collection.title | escape }}"
+              class="collection-card__image"
+              loading="lazy"
+              width="800"
+              height="1000"
+            >
+          {%- endif -%}
+
+          <div class="collection-card__content">
+            <h3 class="collection-card__title">
+              {{ block.settings.title | default: collection.title | default: 'Collection' }}
+            </h3>
+            <span class="collection-card__count">
+              {%- if collection.products_count -%}
+                {{ collection.products_count }} Items
+              {%- else -%}
+                Explore &rarr;
+              {%- endif -%}
+            </span>
+            <a href="{{ collection.url | default: '#' }}" class="product-card__link" style="position: absolute; inset: 0;" aria-label="{{ collection.title }}"></a>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection List",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Categorical Focus"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Core Disciplines"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image (Optional)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection List",
+      "blocks": [
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" }
+      ]
+    }
+  ]
+}
+{% endschema %}

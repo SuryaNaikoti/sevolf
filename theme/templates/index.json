@@ -1,0 +1,116 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "height": 85,
+        "subheading": "Independent Contemporary Label",
+        "heading": "Made for the way you live.",
+        "text": "Carefully engineered essentials and purpose-built digital assets designed for creators, thinkers, and modern lifestyles.",
+        "primary_button_label": "Shop Collection",
+        "primary_button_link": "/collections/all",
+        "secondary_button_label": "Explore Digital",
+        "secondary_button_link": "/collections/digital"
+      }
+    },
+    "collection_list": {
+      "type": "collection-list",
+      "settings": {
+        "subheading": "Categorical Focus",
+        "heading": "Core Disciplines"
+      },
+      "blocks": {
+        "cat_1": {
+          "type": "collection",
+          "settings": {
+            "title": "Heavy Cotton Apparel"
+          }
+        },
+        "cat_2": {
+          "type": "collection",
+          "settings": {
+            "title": "Digital Workspace Kits"
+          }
+        },
+        "cat_3": {
+          "type": "collection",
+          "settings": {
+            "title": "Accessories & Drinkware"
+          }
+        }
+      },
+      "block_order": ["cat_1", "cat_2", "cat_3"]
+    },
+    "featured_products": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Curated Releases",
+        "title": "Featured Editions",
+        "products_to_show": 4,
+        "columns_desktop": "4",
+        "show_view_all": true
+      }
+    },
+    "digital_showcase": {
+      "type": "digital-showcase",
+      "settings": {
+        "heading": "Modern digital tools designed for focus & clarity.",
+        "text": "From meticulously engineered Notion workspaces and digital planners to comprehensive design resources—Sevolf empowers your creative routine with instant, friction-free delivery.",
+        "button_label": "Explore Digital Collection",
+        "button_link": "/collections/digital"
+      }
+    },
+    "brand_story": {
+      "type": "brand-story",
+      "settings": {
+        "subheading": "Our Philosophy",
+        "heading": "Bridging physical essentials with deliberate digital architecture.",
+        "text": "Sevolf was founded on the principle that modern living demands both tangible craftsmanship and seamless digital utility. Every apparel silhouette, accessory, and digital workspace is engineered to reduce friction and elevate daily focus.",
+        "link_label": "Discover Our Story",
+        "link_url": "/pages/about"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "subheading": "Community Perspectives",
+        "heading": "Trusted by modern creators & professionals"
+      },
+      "blocks": {
+        "test_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The oversized tee has an unmatched silhouette and heavy drape. Paired with the notion system, Sevolf genuinely redesigned my daily workflow.",
+            "author": "Rohan M.",
+            "detail": "Creative Director, Bangalore"
+          }
+        },
+        "test_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Instant delivery for the digital planner bundle was frictionless. The clean layout and typography are world-class.",
+            "author": "Ananya S.",
+            "detail": "Architect & Notion Creator"
+          }
+        },
+        "test_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Heavyweight ceramics and premium apparel. It's rare to see a contemporary brand nail both tangible goods and digital architecture.",
+            "author": "Vikram K.",
+            "detail": "Product Designer"
+          }
+        }
+      },
+      "block_order": ["test_1", "test_2", "test_3"]
+    }
+  },
+  "order": [
+    "hero",
+    "collection_list",
+    "featured_products",
+    "digital_showcase",
+    "brand_story",
+    "testimonials"
+  ]
+}

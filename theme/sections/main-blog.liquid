@@ -1,0 +1,47 @@
+<section class="section-spacing">
+  <div class="container container--narrow">
+    <h1 style="margin-bottom: 2rem;">{{ blog.title }}</h1>
+
+    <div style="display: flex; flex-direction: column; gap: 3rem;">
+      {%- paginate blog.articles by 6 -%}
+        {%- for article in blog.articles -%}
+          <article style="border-bottom: 1px solid var(--color-border); padding-bottom: 2.5rem;">
+            {%- if article.image -%}
+              <a href="{{ article.url }}">
+                <img
+                  src="{{ article.image | image_url: width: 1000 }}"
+                  alt="{{ article.image.alt | default: article.title | escape }}"
+                  width="1000"
+                  height="562"
+                  style="border-radius: var(--radius); width: 100%; aspect-ratio: 16/9; object-fit: cover; margin-bottom: 1.5rem;"
+                  loading="lazy"
+                >
+              </a>
+            {%- endif -%}
+            <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--color-text-muted); letter-spacing: 0.05em;">
+              {{ article.published_at | date: '%B %d, %Y' }}
+            </span>
+            <h2 style="font-size: 1.75rem; margin: 0.5rem 0 1rem;">
+              <a href="{{ article.url }}">{{ article.title }}</a>
+            </h2>
+            <p style="color: var(--color-text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+              {{ article.excerpt_or_content | strip_html | truncatewords: 35 }}
+            </p>
+            <a href="{{ article.url }}" style="font-weight: 600; text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.08em; text-decoration: underline;">
+              Read Entry &rarr;
+            </a>
+          </article>
+        {%- endfor -%}
+
+        {% render 'pagination', paginate: paginate %}
+      {%- endpaginate -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog Listing",
+  "settings": []
+}
+{% endschema %}

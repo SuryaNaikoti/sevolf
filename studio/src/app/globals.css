@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --selvof-ivory: #FAF8F2;
+  --selvof-beige: #EAE3D6;
+  --selvof-sage: #899A7E;
+  --selvof-sage-light: #E9EEE5;
+  --selvof-olive: #586B4D;
+  --selvof-charcoal: #292A26;
+  --selvof-grey: #77766F;
+  --selvof-border: #E5DFD6;
+  --selvof-sand: #EFECE6;
+}
+
+/* Print Specific Rules */
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+  
+  body {
+    background-color: #FAF8F2 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .page-sheet {
+    page-break-after: always !important;
+    break-after: page !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
+
+/* Page Aspect Ratio Styles for A4 and US Letter */
+.page-sheet-a4 {
+  width: 210mm;
+  min-height: 297mm;
+  height: 297mm;
+}
+
+.page-sheet-letter {
+  width: 8.5in;
+  min-height: 11in;
+  height: 11in;
+}
+
+/* Dot Grid Background for Room Sketch (High-Contrast for Print) */
+.sketch-grid {
+  background-size: 16px 16px;
+  background-image: radial-gradient(circle, #68795F 1.25px, transparent 1.25px);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f0ea;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5beaf;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a9a191;
+}

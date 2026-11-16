@@ -1,0 +1,167 @@
+{
+  "general": {
+    "search": "Search",
+    "search_placeholder": "Search apparel, accessories, digital tools...",
+    "no_results": "No results found",
+    "view_all": "View all",
+    "close": "Close",
+    "loading": "Loading...",
+    "page_not_found": "Edition Not Found",
+    "page_not_found_message": "The piece or archive you are searching for might have been retired, moved, or temporarily unavailable.",
+    "return_home": "Return to Storefront",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Submit",
+    "or": "or"
+  },
+  "header": {
+    "menu": "Menu",
+    "account": "Account",
+    "cart": "Cart"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Bag",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "price": "Price",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "unit_price": "Unit price",
+      "digital_instant_access": "Instant Digital Download",
+      "digital_file_formats": "Formats Included",
+      "digital_license": "Personal & Commercial License",
+      "shipping_policy_html": "Complimentary standard shipping on eligible orders. Fast, trackable delivery.",
+      "digital_policy_html": "Delivered electronically immediately upon checkout confirmation. No physical package or shipping fee."
+    }
+  },
+  "cart": {
+    "title": "Your Bag",
+    "empty": "Your bag is currently empty.",
+    "continue_shopping": "Continue Exploring",
+    "checkout": "Proceed to Checkout",
+    "subtotal": "Subtotal",
+    "taxes_and_shipping_policy_at_checkout_html": "Taxes, discounts, and physical shipping calculated at checkout.",
+    "remove": "Remove",
+    "order_notes": "Order Instructions / Gift Note"
+  },
+  "customer": {
+    "account": {
+      "title": "Your Account",
+      "details": "Account Details",
+      "order_history": "Order History",
+      "orders": "Orders",
+      "no_orders": "You haven't placed any orders yet.",
+      "start_shopping": "Start Shopping",
+      "default_address": "Default Address",
+      "view_addresses": "View Addresses",
+      "log_out": "Log Out",
+      "return_link": "Return to Account"
+    },
+    "login": {
+      "title": "Sign In",
+      "subtitle": "Access your SEVOLF account",
+      "email": "Email Address",
+      "password": "Password",
+      "sign_in": "Sign In",
+      "forgot_password": "Forgot your password?",
+      "no_account": "Don't have an account?",
+      "create_account": "Create Account",
+      "guest_title": "Continue as Guest",
+      "guest_text": "Proceed to checkout without creating an account."
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Join the SEVOLF community",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email Address",
+      "password": "Password",
+      "create": "Create Account",
+      "has_account": "Already have an account?",
+      "sign_in": "Sign In"
+    },
+    "orders": {
+      "title": "Order {{ name }}",
+      "date": "Placed on {{ date }}",
+      "product": "Product",
+      "sku": "SKU",
+      "price": "Price",
+      "quantity": "Qty",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "discount": "Discount",
+      "total_label": "Total",
+      "fulfillment_status": "Fulfillment",
+      "payment_status": "Payment",
+      "shipping_address": "Shipping Address",
+      "billing_address": "Billing Address",
+      "cancelled": "Order Cancelled",
+      "cancelled_on": "on {{ date }}",
+      "cancelled_reason": "Reason: {{ reason }}"
+    },
+    "reset_password": {
+      "title": "Reset Password",
+      "subtitle": "We'll send you a reset link",
+      "email": "Email Address",
+      "submit": "Send Reset Link",
+      "success": "We've sent you an email with a link to update your password.",
+      "back_to_login": "Back to Sign In"
+    },
+    "activate_account": {
+      "title": "Activate Account",
+      "subtitle": "Set your password to activate",
+      "password": "Password",
+      "password_confirm": "Confirm Password",
+      "submit": "Activate Account",
+      "decline": "Decline Invitation"
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We'd love to hear from you",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "message": "Message",
+    "submit": "Send Message",
+    "success": "Thanks for reaching out. We'll get back to you shortly."
+  },
+  "password_page": {
+    "title": "Opening Soon",
+    "subtitle": "We're preparing something exceptional.",
+    "password_label": "Enter store password",
+    "enter": "Enter",
+    "powered_by": "Powered by Shopify"
+  },
+  "gift_card": {
+    "title": "Gift Card",
+    "subtext": "Your gift card",
+    "shop_link": "Visit Store",
+    "balance": "Card balance",
+    "expired": "Expired",
+    "active": "Active",
+    "copy": "Copy code",
+    "print": "Print card"
+  },
+  "collections": {
+    "title": "All Collections",
+    "products_count": {
+      "one": "{{ count }} product",
+      "other": "{{ count }} products"
+    }
+  },
+  "sections": {
+    "featured_collection": {
+      "view_all": "Explore All"
+    },
+    "collection_template": {
+      "filter_by_label": "Filter by:",
+      "sort_by_label": "Sort by:",
+      "empty": "No products match your selected filters."
+    }
+  }
+}

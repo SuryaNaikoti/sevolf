@@ -1,0 +1,112 @@
+{% comment %}
+  SEVOLF Brand World & Minimal Service Strip Section
+  Presents 3 editorial showroom tiles (OUR UNIVERSE, THE JOURNAL, BEYOND ORDINARY)
+  followed by a minimalist service strip.
+{% endcomment %}
+
+<section class="sevolf-brand-world section-spacing" aria-label="Brand World">
+  <div class="container">
+    <div class="brand-world__header">
+      <span class="brand-world__eyebrow">SEVOLF UNIVERSE</span>
+      <h2 class="brand-world__brand-title">SEVOLF</h2>
+    </div>
+
+    <!-- 3 Editorial Tiles -->
+    <div class="brand-world__grid">
+      <!-- Tile 1 -->
+      <a href="{{ section.settings.tile_1_url | default: '/pages/about' }}" class="brand-world-tile" data-world-tile>
+        <div class="brand-world-tile__backdrop brand-world-tile__backdrop--universe"></div>
+        <div class="brand-world-tile__overlay"></div>
+        <div class="brand-world-tile__content">
+          <span class="brand-world-tile__tag">01 // ESSENCE</span>
+          <h3 class="brand-world-tile__title">OUR UNIVERSE</h3>
+          <span class="brand-world-tile__action">
+            <span>EXPLORE</span>
+            <span class="brand-world-tile__arrow" aria-hidden="true">&rarr;</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Tile 2 -->
+      <a href="{{ section.settings.tile_2_url | default: '/blogs/journal' }}" class="brand-world-tile" data-world-tile>
+        <div class="brand-world-tile__backdrop brand-world-tile__backdrop--journal"></div>
+        <div class="brand-world-tile__overlay"></div>
+        <div class="brand-world-tile__content">
+          <span class="brand-world-tile__tag">02 // ARCHIVE DISPATCH</span>
+          <h3 class="brand-world-tile__title">THE JOURNAL</h3>
+          <span class="brand-world-tile__action">
+            <span>READ</span>
+            <span class="brand-world-tile__arrow" aria-hidden="true">&rarr;</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Tile 3 -->
+      <a href="{{ section.settings.tile_3_url | default: routes.all_products_collection_url }}" class="brand-world-tile" data-world-tile>
+        <div class="brand-world-tile__backdrop brand-world-tile__backdrop--ordinary"></div>
+        <div class="brand-world-tile__overlay"></div>
+        <div class="brand-world-tile__content">
+          <span class="brand-world-tile__tag">03 // DIRECTION</span>
+          <h3 class="brand-world-tile__title">BEYOND ORDINARY</h3>
+          <span class="brand-world-tile__action">
+            <span>DISCOVER</span>
+            <span class="brand-world-tile__arrow" aria-hidden="true">&rarr;</span>
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Minimalist Service Strip (01 FREE SHIPPING | 02 EASY RETURNS | 03 SECURE PAYMENTS) -->
+    <div class="sevolf-service-strip" aria-label="Customer Services">
+      <div class="service-strip__item">
+        <span class="service-strip__num">01</span>
+        <div class="service-strip__text">
+          <span class="service-strip__heading">FREE SHIPPING</span>
+          <span class="service-strip__sub">Complimentary standard shipping on orders over ₹1,499</span>
+        </div>
+      </div>
+      <div class="service-strip__item">
+        <span class="service-strip__num">02</span>
+        <div class="service-strip__text">
+          <span class="service-strip__heading">EASY RETURNS</span>
+          <span class="service-strip__sub">Hassle-free 7-day exchange window for sizing adjustments</span>
+        </div>
+      </div>
+      <div class="service-strip__item">
+        <span class="service-strip__num">03</span>
+        <div class="service-strip__text">
+          <span class="service-strip__heading">SECURE PAYMENTS</span>
+          <span class="service-strip__sub">256-bit encrypted checkout via UPI, Cards & NetBanking</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SEVOLF Brand World",
+  "settings": [
+    {
+      "type": "url",
+      "id": "tile_1_url",
+      "label": "Tile 1 URL (Our Universe)"
+    },
+    {
+      "type": "url",
+      "id": "tile_2_url",
+      "label": "Tile 2 URL (The Journal)"
+    },
+    {
+      "type": "url",
+      "id": "tile_3_url",
+      "label": "Tile 3 URL (Beyond Ordinary)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SEVOLF Brand World"
+    }
+  ]
+}
+{% endschema %}

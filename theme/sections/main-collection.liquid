@@ -1,0 +1,125 @@
+<section class="section-spacing section-spacing--collection">
+  <div class="container">
+    <!-- Collection Header -->
+    <div class="collection-header">
+      <h1 class="collection-header__title">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="collection-header__description">
+          {{ collection.description }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Filter & Sort Bar -->
+    <div class="collection-toolbar">
+      <form id="CollectionFiltersForm" class="collection-toolbar__form">
+        <!-- Dynamic Facet Filters -->
+        <div class="collection-toolbar__filters">
+          {%- if collection.filters.size > 0 -%}
+            <span class="collection-toolbar__label">Filter:</span>
+            {%- for filter in collection.filters -%}
+              <details class="filter-dropdown">
+                <summary class="filter-dropdown__summary">
+                  <span>{{ filter.label }}</span>
+                  {%- if filter.active_values.size > 0 -%}
+                    <span class="filter-dropdown__badge">{{ filter.active_values.size }}</span>
+                  {%- endif -%}
+                  {% render 'icon', icon: 'chevron-down' %}
+                </summary>
+                <div class="filter-dropdown__content">
+                  {%- case filter.type -%}
+                    {%- when 'list' or 'boolean' -%}
+                      <ul class="filter-dropdown__list">
+                        {%- for value in filter.values -%}
+                          <li class="filter-dropdown__item">
+                            <label class="filter-dropdown__checkbox-label">
+                              <input
+                                type="checkbox"
+                                name="{{ value.param_name }}"
+                                value="{{ value.value }}"
+                                onchange="this.form.submit();"
+                                {% if value.active %}checked{% endif %}
+                                {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                              >
+                              <span>{{ value.label }} ({{ value.count }})</span>
+                            </label>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                  {%- endcase -%}
+                </div>
+              </details>
+            {%- endfor -%}
+
+            <a href="{{ collection.url }}?sort_by={{ collection.sort_by }}" class="filter-clear-all">
+              Clear All
+            </a>
+          {%- endif -%}
+        </div>
+
+        <!-- Sorting & Product Count -->
+        <div class="collection-toolbar__sort">
+          <span class="collection-toolbar__count">{{ collection.products_count }} {{ collection.products_count | pluralize: 'product', 'products' }}</span>
+          <div class="collection-sort-wrapper">
+            <label for="SortBy" class="visually-hidden">Sort By</label>
+            <select id="SortBy" name="sort_by" onchange="this.form.submit();" class="collection-sort-select">
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>
+                  {{ option.name }}
+                </option>
+              {%- endfor -%}
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Product Grid -->
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- if collection.products_count > 0 -%}
+        <div class="grid grid--{{ section.settings.columns_desktop }}">
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product %}
+          {%- endfor -%}
+        </div>
+
+        {% render 'pagination', paginate: paginate %}
+      {%- else -%}
+        <div class="collection-empty-state">
+          <h3>No products found</h3>
+          <p>Try adjusting your filters or browsing other editions.</p>
+          <a href="{{ routes.all_products_collection_url }}" class="btn btn--outline" style="margin-top: 1.5rem;">
+            Explore All Products
+          </a>
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 36,
+      "step": 4,
+      "default": 16,
+      "label": "Products per page"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "options": [
+        { "value": "3", "label": "3 Columns" },
+        { "value": "4", "label": "4 Columns" }
+      ],
+      "default": "4"
+    }
+  ]
+}
+{% endschema %}

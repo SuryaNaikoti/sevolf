@@ -1,0 +1,36 @@
+<section class="section-spacing">
+  <div class="container container--narrow">
+    <div style="margin-bottom: 2.5rem; text-align: center;">
+      <span style="font-size: 0.82rem; text-transform: uppercase; color: var(--color-text-muted); letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">
+        {{ article.published_at | date: '%B %d, %Y' }} &bull; By {{ article.author }}
+      </span>
+      <h1 style="font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.15;">{{ article.title }}</h1>
+    </div>
+
+    {%- if article.image -%}
+      <img
+        src="{{ article.image | image_url: width: 1200 }}"
+        alt="{{ article.image.alt | default: article.title | escape }}"
+        width="1200"
+        height="675"
+        style="border-radius: var(--radius); width: 100%; aspect-ratio: 16/9; object-fit: cover; margin-bottom: 3rem;"
+        loading="eager"
+      >
+    {%- endif -%}
+
+    <div style="font-size: 1.1rem; line-height: 1.85; color: var(--color-text);">
+      {{ article.content }}
+    </div>
+
+    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between;">
+      <a href="{{ blog.url }}" class="btn btn--outline">&larr; Back to Dispatch</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Article Page",
+  "settings": []
+}
+{% endschema %}

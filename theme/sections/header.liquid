@@ -1,0 +1,232 @@
+<header class="site-header" role="banner" id="SiteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Mobile Menu Toggle -->
+      <button
+        type="button"
+        class="mobile-menu-toggle action-btn"
+        data-mobile-menu-toggle
+        aria-label="Open Navigation"
+        aria-expanded="false"
+        aria-controls="MobileNavDrawer"
+      >
+        {% render 'icon', icon: 'menu' %}
+      </button>
+
+      <!-- Left Navigation Menu (SHOP, BRAND, JOURNAL) -->
+      <nav class="header-nav header-nav--left" role="navigation" aria-label="Main Navigation">
+        {%- if section.settings.menu.links.size > 0 -%}
+          {%- for link in section.settings.menu.links -%}
+            {%- if link.links != blank -%}
+              <div class="nav-item--dropdown">
+                <a href="{{ link.url }}" class="nav-link{% if link.active %} active{% endif %}">
+                  {{ link.title }}
+                  {% render 'icon', icon: 'chevron-down' %}
+                </a>
+                <ul class="dropdown-menu">
+                  {%- for child_link in link.links -%}
+                    <li>
+                      <a href="{{ child_link.url }}" class="{% if child_link.active %}active{% endif %}">
+                        {{ child_link.title }}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- else -%}
+              <a href="{{ link.url }}" class="nav-link{% if link.active %} active{% endif %}">
+                {{ link.title }}
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          <a href="{{ routes.all_products_collection_url }}" class="nav-link">SHOP</a>
+          <a href="/pages/about" class="nav-link">BRAND</a>
+          <a href="/blogs/journal" class="nav-link">JOURNAL</a>
+        {%- endif -%}
+      </nav>
+
+      <!-- Center Logo -->
+      <div class="header-logo-wrapper">
+        <a href="{{ routes.root_url }}" class="header-logo" aria-label="{{ shop.name | default: 'SEVOLF' }}">
+          {%- if settings.logo != blank -%}
+            <img
+              src="{{ settings.logo | image_url: width: settings.logo_width }}"
+              alt="{{ shop.name }}"
+              width="{{ settings.logo_width }}"
+              height="auto"
+              class="header-logo__img"
+            >
+          {%- else -%}
+            {{ shop.name | default: 'SEVOLF' }}
+          {%- endif -%}
+        </a>
+      </div>
+
+      <!-- Right Actions (SEARCH, ACCOUNT, BAG (0)) -->
+      <div class="header-actions">
+        <a href="{{ routes.search_url }}" class="header-action-text-btn" aria-label="Search Catalog">
+          <span class="header-action-label">SEARCH</span>
+          <span class="header-action-icon">{% render 'icon', icon: 'search' %}</span>
+        </a>
+
+        {%- if shop.customer_accounts_enabled -%}
+          <a href="{{ routes.account_url }}" class="header-action-text-btn" aria-label="Customer Account">
+            <span class="header-action-label">ACCOUNT</span>
+            <span class="header-action-icon">{% render 'icon', icon: 'user' %}</span>
+          </a>
+        {%- endif -%}
+
+        <button
+          type="button"
+          class="header-action-text-btn header-action-bag"
+          data-cart-drawer-trigger
+          aria-label="Shopping Bag ({{ cart.item_count }} items)"
+          aria-controls="CartDrawer"
+        >
+          <span class="header-action-label">BAG</span>
+          <span class="header-action-bag-count">(<span data-cart-count>{{ cart.item_count }}</span>)</span>
+          <span class="header-action-icon">{% render 'icon', icon: 'cart' %}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Overlay — placed OUTSIDE header to avoid stacking-context clipping -->
+<div class="mobile-nav-overlay" data-mobile-menu-overlay aria-hidden="true"></div>
+
+<!-- Mobile Navigation Drawer — placed OUTSIDE header to avoid stacking-context clipping -->
+<div
+  class="mobile-nav-drawer"
+  id="MobileNavDrawer"
+  data-mobile-menu
+  role="dialog"
+  aria-modal="true"
+  aria-label="Mobile Navigation"
+  aria-hidden="true"
+>
+  <div class="mobile-nav-drawer__header">
+    <span class="mobile-nav-drawer__logo">{{ shop.name | default: 'SEVOLF' }}</span>
+    <button
+      type="button"
+      class="action-btn mobile-nav-drawer__close"
+      data-mobile-menu-close
+      aria-label="Close Navigation"
+    >
+      {% render 'icon', icon: 'close' %}
+    </button>
+  </div>
+
+  <div class="mobile-nav-drawer__body">
+    <nav class="mobile-nav-list" role="navigation" aria-label="Mobile Navigation List">
+      <!-- Always ensure primary SEVOLF editorial catalog navigation is present -->
+      <div class="mobile-nav-item">
+        <div class="mobile-nav-item__parent">
+          <a href="{{ routes.all_products_collection_url }}" class="mobile-nav-link is-active">SHOP</a>
+          <button
+            type="button"
+            class="mobile-nav-item__toggle"
+            data-mobile-submenu-toggle
+            aria-expanded="false"
+            aria-label="Toggle submenu for SHOP"
+          >
+            {% render 'icon', icon: 'chevron-down' %}
+          </button>
+        </div>
+        <div class="mobile-nav-submenu" data-mobile-submenu>
+          <a href="{{ routes.all_products_collection_url }}" class="mobile-nav-sublink">All Products</a>
+          <a href="/collections/all" class="mobile-nav-sublink">Apparel</a>
+          <a href="/collections/t-shirts" class="mobile-nav-sublink">T-Shirts</a>
+          <a href="/collections/hoodies" class="mobile-nav-sublink">Hoodies &amp; Sweatshirts</a>
+          <a href="/collections/digital" class="mobile-nav-sublink">Digital Products</a>
+          <a href="/collections/accessories" class="mobile-nav-sublink">Accessories</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-item">
+        <a href="/pages/about" class="mobile-nav-link">BRAND</a>
+      </div>
+      <div class="mobile-nav-item">
+        <a href="/blogs/journal" class="mobile-nav-link">JOURNAL</a>
+      </div>
+      <div class="mobile-nav-item">
+        <a href="/pages/lookbook" class="mobile-nav-link">LOOKBOOK</a>
+      </div>
+      <div class="mobile-nav-item">
+        <a href="/pages/archive" class="mobile-nav-link">ARCHIVE</a>
+      </div>
+
+      {%- if section.settings.menu.links.size > 0 -%}
+          {%- for link in section.settings.menu.links -%}
+            {%- assign link_title_down = link.title | downcase | strip -%}
+            {%- unless link_title_down == 'home' or link_title_down == 'shop' or link_title_down == 'catalog' -%}
+              <div class="mobile-nav-item">
+                {%- if link.links != blank -%}
+                  <div class="mobile-nav-item__parent">
+                    <a href="{{ link.url }}" class="mobile-nav-link{% if link.active %} is-active{% endif %}">
+                      {{ link.title }}
+                    </a>
+                    <button
+                      type="button"
+                      class="mobile-nav-item__toggle"
+                      data-mobile-submenu-toggle
+                      aria-expanded="false"
+                      aria-label="Toggle submenu for {{ link.title }}"
+                    >
+                      {% render 'icon', icon: 'chevron-down' %}
+                    </button>
+                  </div>
+                  <div class="mobile-nav-submenu" data-mobile-submenu>
+                    {%- for child_link in link.links -%}
+                      <a href="{{ child_link.url }}" class="mobile-nav-sublink{% if child_link.active %} is-active{% endif %}">
+                        {{ child_link.title }}
+                      </a>
+                    {%- endfor -%}
+                  </div>
+                {%- else -%}
+                  <a href="{{ link.url }}" class="mobile-nav-link{% if link.active %} is-active{% endif %}">
+                    {{ link.title }}
+                  </a>
+                {%- endif -%}
+              </div>
+            {%- endunless -%}
+          {%- endfor -%}
+        {%- endif -%}
+      </nav>
+    </div>
+
+    <div class="mobile-nav-drawer__footer">
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="mobile-nav-footer-link">
+          {% render 'icon', icon: 'user' %}
+          <span>Account</span>
+        </a>
+      {%- endif -%}
+      <a href="{{ routes.search_url }}" class="mobile-nav-footer-link">
+        {% render 'icon', icon: 'search' %}
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Enable sticky header",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,94 @@
+<section class="section-spacing">
+  <div class="container">
+    <div class="account-dashboard" data-scroll-reveal>
+      <div class="account-dashboard__header">
+        <div>
+          <h1 class="account-dashboard__title">{{ 'customer.account.title' | t }}</h1>
+          <p class="account-dashboard__greeting">Welcome back, {{ customer.first_name }}.</p>
+        </div>
+        <a href="{{ routes.account_logout_url }}" class="btn btn--outline btn--sm">{{ 'customer.account.log_out' | t }}</a>
+      </div>
+
+      <div class="account-dashboard__grid">
+        <!-- Order History -->
+        <div class="account-section">
+          <h2 class="account-section__title">{{ 'customer.account.order_history' | t }}</h2>
+
+          {%- if customer.orders.size > 0 -%}
+            <div class="account-orders-table-wrapper">
+              <table class="account-orders-table">
+                <thead>
+                  <tr>
+                    <th>Order</th>
+                    <th>Date</th>
+                    <th>Payment</th>
+                    <th>Fulfillment</th>
+                    <th class="text-right">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%- for order in customer.orders -%}
+                    <tr>
+                      <td>
+                        <a href="{{ order.customer_url }}" class="account-orders-table__link">{{ order.name }}</a>
+                      </td>
+                      <td>{{ order.created_at | date: '%b %d, %Y' }}</td>
+                      <td>
+                        <span class="order-status order-status--{{ order.financial_status }}">
+                          {{ order.financial_status_label }}
+                        </span>
+                      </td>
+                      <td>
+                        <span class="order-status order-status--{{ order.fulfillment_status | default: 'unfulfilled' }}">
+                          {{ order.fulfillment_status_label | default: 'Unfulfilled' }}
+                        </span>
+                      </td>
+                      <td class="text-right">{{ order.total_net_amount | money }}</td>
+                    </tr>
+                  {%- endfor -%}
+                </tbody>
+              </table>
+            </div>
+          {%- else -%}
+            <div class="account-empty-state">
+              <p>{{ 'customer.account.no_orders' | t }}</p>
+              <a href="{{ routes.all_products_collection_url }}" class="btn" style="margin-top: 1.5rem;">
+                {{ 'customer.account.start_shopping' | t }}
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <!-- Account Details Sidebar -->
+        <div class="account-sidebar">
+          <div class="account-section">
+            <h2 class="account-section__title">{{ 'customer.account.details' | t }}</h2>
+            <div class="account-detail-block">
+              <p class="account-detail-block__name">{{ customer.name }}</p>
+              <p class="account-detail-block__email">{{ customer.email }}</p>
+            </div>
+          </div>
+
+          {%- if customer.default_address -%}
+            <div class="account-section">
+              <h2 class="account-section__title">{{ 'customer.account.default_address' | t }}</h2>
+              <div class="account-detail-block">
+                <p>{{ customer.default_address | format_address }}</p>
+              </div>
+              <a href="{{ routes.account_addresses_url }}" class="account-link" style="margin-top: 1rem; display: inline-block;">
+                {{ 'customer.account.view_addresses' | t }} &rarr;
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Customer Account",
+  "settings": []
+}
+{% endschema %}

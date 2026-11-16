@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_bg }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {% render 'seo-tags' %}
+
+    {{ content_for_header }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    <style>
+      :root {
+        --color-bg: {{ settings.color_bg | default: '#FAF8F5' }};
+        --color-surface: {{ settings.color_surface | default: '#FFFFFF' }};
+        --color-text: {{ settings.color_text | default: '#141413' }};
+        --color-text-muted: {{ settings.color_text_muted | default: '#686663' }};
+        --color-border: {{ settings.color_border | default: '#E6E2DC' }};
+        --color-accent: {{ settings.color_accent | default: '#2D312E' }};
+        --color-brand-orange: #FF4D00;
+        --color-brand-orange-subtle: rgba(255, 77, 0, 0.08);
+        --color-brand-orange-glow: rgba(255, 77, 0, 0.2);
+        --color-btn-bg: {{ settings.color_button_bg | default: '#141413' }};
+        --color-btn-text: {{ settings.color_button_text | default: '#FFFFFF' }};
+        --color-badge-sale: {{ settings.color_badge_sale | default: '#D9534F' }};
+        --color-badge-digital: {{ settings.color_badge_digital | default: '#1A4731' }};
+        --max-width: {{ settings.page_max_width | default: 1400 }}px;
+        --radius: {{ settings.border_radius | default: 0 }}px;
+      }
+    </style>
+
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+  </head>
+
+  <body class="template-{{ template.name | handle }}">
+    <a class="visually-hidden" href="#MainContent">Skip to content</a>
+
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+    {% section 'cart-drawer' %}
+  </body>
+</html>

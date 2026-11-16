@@ -1,0 +1,738 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign fulfillment_meta = product.metafields.custom.fulfillment_type | downcase | strip
+  assign is_digital = false
+  assign is_bundle = false
+
+  if fulfillment_meta == 'digital'
+    assign is_digital = true
+  elsif fulfillment_meta == 'bundle'
+    assign is_bundle = true
+  elsif fulfillment_meta == 'physical'
+    assign is_digital = false
+    assign is_bundle = false
+  else
+    if product.type == 'Digital' or product.tags contains 'Digital' or product.tags contains 'digital'
+      assign is_digital = true
+    elsif product.type == 'Bundle' or product.tags contains 'Bundle' or product.tags contains 'bundle'
+      assign is_bundle = true
+    endif
+  endif
+
+  # Size guide detection: custom.size_guide is primary source, secondary is size-chart media
+  assign has_size_guide = false
+  assign size_chart_media = null
+
+  if product.metafields.custom.size_guide != blank
+    assign has_size_guide = true
+  endif
+
+  for media in product.media
+    assign alt_clean = media.alt | downcase
+    if alt_clean contains 'size chart' or alt_clean contains 'size guide' or alt_clean contains 'sizing'
+      assign has_size_guide = true
+      assign size_chart_media = media
+      break
+    endif
+  endfor
+
+  # Category breadcrumb or subcategory
+  assign primary_cat = product.metafields.custom.primary_category | default: product.type
+  assign sub_cat = product.metafields.custom.subcategory
+-%}
+
+<section class="product-section section-spacing" data-section-id="{{ section.id }}" data-section-type="product">
+  <div class="container">
+    <!-- Breadcrumbs (Desktop) -->
+    <nav class="product-breadcrumbs product-breadcrumbs--desktop" aria-label="Breadcrumb">
+      <ol class="product-breadcrumbs__list">
+        <li><a href="{{ routes.root_url }}">Home</a></li>
+        {%- if primary_cat != blank -%}
+          <li class="breadcrumbs__sep">/</li>
+          <li><span>{{ primary_cat }}</span></li>
+        {%- endif -%}
+        {%- if sub_cat != blank -%}
+          <li class="breadcrumbs__sep">/</li>
+          <li><span>{{ sub_cat }}</span></li>
+        {%- endif -%}
+      </ol>
+    </nav>
+
+    <div class="product-page-layout">
+      <!-- Media Gallery — 60-65% Editorial Sequence with Paired Grid and 3D Depth -->
+      <div class="product-gallery" data-product-gallery>
+        {%- if product.media.size > 0 -%}
+          <!-- Desktop Editorial Grid with paired composition -->
+          <div class="product-gallery__grid" data-gallery-grid>
+            {%- for media in product.media -%}
+              {%- liquid
+                assign is_wide = false
+                if forloop.index == 5
+                  assign is_wide = true
+                endif
+
+                assign item_color = ''
+                assign alt_lower = media.alt | default: '' | downcase
+                if alt_lower contains 'black'
+                  assign item_color = 'black'
+                elsif alt_lower contains 'white'
+                  assign item_color = 'white'
+                endif
+              -%}
+              <div
+                class="product-gallery__item{% if forloop.first %} is-active{% endif %}{% if is_wide %} product-gallery__item--wide{% endif %}"
+                data-media-id="{{ media.id }}"
+                data-index="{{ forloop.index0 }}"
+                {% if item_color != '' %}data-color="{{ item_color }}"{% endif %}
+                data-depth-item
+              >
+                <!-- Subtle Unobtrusive Numbering (001, 002, 003...) -->
+                <div class="gallery-item-number" aria-hidden="true">
+                  <span class="gallery-item-number__dot"></span>
+                  <span class="gallery-item-number__code">{% if forloop.index < 10 %}00{% elsif forloop.index < 100 %}0{% endif %}{{ forloop.index }}</span>
+                </div>
+
+                <button
+                  type="button"
+                  class="product-gallery__zoom-trigger"
+                  data-gallery-lightbox-trigger
+                  data-full-image="{{ media | image_url: width: 2400 }}"
+                  aria-label="View larger image {{ forloop.index }} of {{ product.media.size }}"
+                >
+                  <img
+                    src="{{ media | image_url: width: 1400 }}"
+                    alt="{{ media.alt | default: product.title | escape }}"
+                    loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                    width="1200"
+                    height="1500"
+                    class="product-gallery__image"
+                    data-media-image
+                  >
+                  <span class="product-gallery__zoom-icon" aria-hidden="true">
+                    {% render 'icon', icon: 'zoom' %}
+                  </span>
+                </button>
+              </div>
+            {%- endfor -%}
+          </div>
+
+          <!-- Mobile Slider Controls & Technical Counter -->
+          <div class="product-gallery__mobile-bar">
+            <button type="button" class="gallery-nav-btn gallery-nav-btn--prev" data-gallery-prev aria-label="Previous image">
+              {% render 'icon', icon: 'arrow-left' %}
+            </button>
+            <span class="product-gallery__counter" data-gallery-counter>
+              <span class="gallery-counter__dot" aria-hidden="true"></span>
+              <span data-gallery-current>01</span> / <span data-gallery-total>{% if product.media.size < 10 %}0{% endif %}{{ product.media.size }}</span>
+            </span>
+            <button type="button" class="gallery-nav-btn gallery-nav-btn--next" data-gallery-next aria-label="Next image">
+              {% render 'icon', icon: 'arrow-right' %}
+            </button>
+          </div>
+
+          <!-- Mobile Thumbnails Strip -->
+          {%- if product.media.size > 1 -%}
+            <div class="product-gallery__thumbs" data-gallery-thumbs role="tablist" aria-label="Product thumbnails">
+              {%- for media in product.media -%}
+                {%- liquid
+                  assign thumb_color = ''
+                  assign thumb_alt_lower = media.alt | default: '' | downcase
+                  if thumb_alt_lower contains 'black'
+                    assign thumb_color = 'black'
+                  elsif thumb_alt_lower contains 'white'
+                    assign thumb_color = 'white'
+                  endif
+                -%}
+                <button
+                  type="button"
+                  class="product-gallery__thumb{% if forloop.first %} is-selected{% endif %}"
+                  data-thumb-index="{{ forloop.index0 }}"
+                  {% if thumb_color != '' %}data-color="{{ thumb_color }}"{% endif %}
+                  aria-label="Thumbnail {{ forloop.index }} of {{ product.media.size }}"
+                >
+                  <img
+                    src="{{ media | image_url: width: 160, height: 200, crop: 'center' }}"
+                    alt="{{ media.alt | default: product.title | escape }}"
+                    loading="lazy"
+                    width="80"
+                    height="100"
+                  >
+                </button>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+        {%- else -%}
+          <div class="product-gallery__item product-gallery__item--placeholder">
+            <span>SEVOLF</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Product Information Column — 35-40% Sticky Technical Luxury Purchase Panel -->
+      <div class="product-info{% if section.settings.enable_sticky_info %} product-info--sticky{% endif %}">
+        <!-- Breadcrumbs (Understated Mobile & Desktop In-Panel) -->
+        <nav class="product-breadcrumbs" aria-label="Breadcrumb">
+          <ol class="product-breadcrumbs__list">
+            <li><a href="{{ routes.root_url }}">HOME</a></li>
+            <li class="breadcrumbs__sep">/</li>
+            <li><a href="{{ routes.all_products_collection_url }}">{{ primary_cat | default: 'T-SHIRTS' | upcase }}</a></li>
+            <li class="breadcrumbs__sep">/</li>
+            <li><span>{{ product.title | upcase }}</span></li>
+          </ol>
+        </nav>
+
+        <!-- Category Eyebrow -->
+        <div class="product-info__eyebrow-row">
+          <span class="product-info__category-tag">{{ primary_cat | default: 'T-SHIRTS' | upcase }}</span>
+          <div class="product-info__badges">
+            {% render 'badge', product: product, use_variant: true %}
+          </div>
+        </div>
+
+        <h1 class="product-info__title">
+          {{ product.title }}
+        </h1>
+
+        <!-- Price Lockup -->
+        <div class="product-info__price-wrapper">
+          {% render 'price', product: product, use_variant: true %}
+          <div class="product-info__price-meta">
+            <span class="product-info__tax-note">Incl. of all taxes</span>
+            <span class="product-info__shipping-flag">
+              <span class="shipping-pulse-dot" aria-hidden="true"></span>
+              Prompt Pan-India Dispatch
+            </span>
+          </div>
+        </div>
+
+        <!-- Narrative Teaser Quote & Anchor Link -->
+        <div class="product-info__narrative-teaser">
+          <p class="narrative-teaser__lead">Always in motion. Further ahead.</p>
+          <p class="narrative-teaser__body">
+            ETERNAL MOTION explores movement, direction and the space between where you are and where you're going.
+          </p>
+          <button type="button" class="product-details-link-btn" data-scroll-to-details>
+            <span>PRODUCT DETAILS</span>
+            <span class="product-details-link-arrow" aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+
+        {%- if is_digital -%}
+          {% render 'digital-meta', product: product %}
+        {%- endif -%}
+
+        <!-- Add to Cart Form -->
+        {%- form 'product', product, id: 'product-form', class: 'product-form' -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}" data-master-variant-id>
+
+          <!-- Variant Pickers -->
+          {%- unless product.has_only_default_variant -%}
+            <div class="variant-selectors">
+              {%- for option in product.options_with_values -%}
+                {%- liquid
+                  assign option_name_lower = option.name | downcase
+                  assign is_size_option = false
+                  if option_name_lower == 'size'
+                    assign is_size_option = true
+                  endif
+                  assign is_color_option = false
+                  if option_name_lower == 'color' or option_name_lower == 'colour'
+                    assign is_color_option = true
+                  endif
+                -%}
+
+                <div class="variant-selector-group" data-option-index="{{ forloop.index0 }}">
+                  <div class="variant-selector-group__header">
+                    <span class="variant-selector-group__label">
+                      {% if is_color_option %}COLOUR{% elsif is_size_option %}SIZE{% else %}{{ option.name | upcase }}{% endif %}: 
+                      <span class="variant-selector-group__selected-val" data-option-selected-label>{{ option.selected_value | upcase }}</span>
+                    </span>
+
+                    {%- if is_size_option -%}
+                      <button type="button" class="size-guide-trigger" data-size-guide-open aria-haspopup="dialog">
+                        <span>FIND MY SIZE</span>
+                      </button>
+                    {%- endif -%}
+                  </div>
+
+                  <div class="variant-options{% if is_color_option %} variant-options--color{% endif %}">
+                    {%- if is_size_option -%}
+                      {%- liquid
+                        assign ordered_sizes = "XS,S,M,L,XL,XXL,2XL,3XL,Free Size,One Size" | split: ","
+                        assign sorted_values = ""
+                        for size in ordered_sizes
+                          for val in option.values
+                            if val == size
+                              if sorted_values == ""
+                                assign sorted_values = val
+                              else
+                                assign sorted_values = sorted_values | append: "||" | append: val
+                              endif
+                            endif
+                          endfor
+                        endfor
+
+                        for val in option.values
+                          unless ordered_sizes contains val
+                            if sorted_values == ""
+                              assign sorted_values = val
+                            else
+                              assign sorted_values = sorted_values | append: "||" | append: val
+                            endif
+                          endunless
+                        endfor
+
+                        assign final_values = sorted_values | split: "||"
+                      -%}
+                    {%- else -%}
+                      {%- assign final_values = option.values -%}
+                    {%- endif -%}
+
+                    {%- for value in final_values -%}
+                      <label class="variant-option-label" for="Option-{{ section.id }}-{{ option.name | handle }}-{{ value | handle }}">
+                        <input
+                          type="radio"
+                          id="Option-{{ section.id }}-{{ option.name | handle }}-{{ value | handle }}"
+                          class="variant-radio-input visually-hidden"
+                          name="options[{{ option.name | escape }}]"
+                          value="{{ value | escape }}"
+                          data-option-position="{{ option.position }}"
+                          {% if option.selected_value == value %}checked{% endif %}
+                        >
+                        {%- if is_color_option -%}
+                          {%- liquid
+                            assign color_bg_style = '#FFFFFF'
+                            assign val_lower = value | downcase
+                            if val_lower contains 'black' or val_lower contains 'noir'
+                              assign color_bg_style = '#141413'
+                            elsif val_lower contains 'white'
+                              assign color_bg_style = '#FFFFFF'
+                            elsif val_lower contains 'grey' or val_lower contains 'gray'
+                              assign color_bg_style = '#686663'
+                            endif
+                          -%}
+                          <span
+                            class="variant-color-swatch variant-color-swatch--circle"
+                            style="background-color: {{ color_bg_style }};"
+                            title="{{ value }}"
+                          ></span>
+                        {%- else -%}
+                          <span class="variant-radio-btn">{{ value }}</span>
+                        {%- endif -%}
+                      </label>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+
+            <!-- Variants JSON helper -->
+            <script type="application/json" data-variants-json>
+              {{ product.variants | json }}
+            </script>
+          {%- endunless -%}
+
+          <!-- Purchase Controls (ADD TO BAG & BUY IT NOW) -->
+          <div class="product-actions product-actions--editorial">
+            <button
+              type="submit"
+              name="add"
+              class="btn btn--primary btn--add-to-bag btn--full"
+              data-add-to-bag-btn
+              {% unless current_variant.available %}disabled{% endunless %}
+            >
+              <span class="btn-text-wrap" data-btn-text>
+                {%- if current_variant.available -%}
+                  {%- if is_digital -%}
+                    GET INSTANT ACCESS
+                  {%- elsif is_bundle -%}
+                    GET BUNDLE
+                  {%- else -%}
+                    ADD TO BAG
+                  {%- endif -%}
+                {%- else -%}
+                  SOLD OUT
+                {%- endif -%}
+              </span>
+              <span class="btn-hover-arrow" aria-hidden="true">&rarr;</span>
+            </button>
+          </div>
+
+          {%- if section.settings.show_dynamic_checkout and current_variant.available -%}
+            <div class="dynamic-checkout-wrapper">
+              {{ form | payment_button }}
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+
+        <!-- Editorial Story & Technical Specifications Accordions -->
+        <div class="editorial-tabs-accordion" data-editorial-tabs id="ProductDetailsAccordion">
+          <!-- 1. Description -->
+          <div class="accordion__item is-open" data-accordion-item>
+            <button type="button" class="accordion__header" data-accordion-header aria-expanded="true">
+              <span class="accordion__title">
+                DESCRIPTION
+              </span>
+              <span class="accordion__icon-wrap">
+                <span class="accordion__icon-line accordion__icon-line--h"></span>
+                <span class="accordion__icon-line accordion__icon-line--v"></span>
+              </span>
+            </button>
+            <div class="accordion__content" data-accordion-content>
+              <div class="prose">
+                <p><strong>ETERNAL MOTION</strong></p>
+                <p>Always in motion. Further ahead.</p>
+                <p>
+                  ETERNAL MOTION explores movement, direction and the space between where you are and where you're going.
+                </p>
+                <p>
+                  Built on a clean white oversized silhouette, the piece features a highly detailed back graphic combining orbital forms, celestial elements, technical markings and the SEVOLF insignia. A smaller matching emblem sits on the left chest, creating a visual connection between the front and back.
+                </p>
+                <p>
+                  The result is a statement piece that feels technical without losing its restraint.
+                </p>
+                {%- if product.description != blank -%}
+                  <div class="product-editorial-custom-desc">
+                    {{ product.description }}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Size & Fit -->
+          <div class="accordion__item" data-accordion-item>
+            <button type="button" class="accordion__header" data-accordion-header aria-expanded="false">
+              <span class="accordion__title">
+                SIZE & FIT
+              </span>
+              <span class="accordion__icon-wrap">
+                <span class="accordion__icon-line accordion__icon-line--h"></span>
+                <span class="accordion__icon-line accordion__icon-line--v"></span>
+              </span>
+            </button>
+            <div class="accordion__content" data-accordion-content>
+              <div class="prose">
+                <p>Unisex oversized / relaxed fit.</p>
+                <p>Dropped shoulders.<br>Extended silhouette.</p>
+                <p>Sizes XS–XXL.</p>
+                {%- if product.metafields.custom.size_guide != blank -%}
+                  <div style="margin-top: 1rem;">
+                    {{ product.metafields.custom.size_guide }}
+                  </div>
+                {%- endif -%}
+
+                {%- if size_chart_media != null -%}
+                  <div class="accordion-size-chart-img" style="margin-top: 1rem;">
+                    {{
+                      size_chart_media
+                      | image_url: width: 800
+                      | image_tag: loading: 'lazy', alt: 'Size Chart'
+                    }}
+                  </div>
+                {%- endif -%}
+
+                <button type="button" class="btn btn--outline" style="margin-top: 1.25rem; font-size: 0.78rem; padding: 0.65rem 1.4rem; letter-spacing: 0.08em; text-transform: uppercase;" data-size-guide-open>
+                  View Complete Size Matrix
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Material & Care -->
+          <div class="accordion__item" data-accordion-item>
+            <button type="button" class="accordion__header" data-accordion-header aria-expanded="false">
+              <span class="accordion__title">
+                MATERIAL & CARE
+              </span>
+              <span class="accordion__icon-wrap">
+                <span class="accordion__icon-line accordion__icon-line--h"></span>
+                <span class="accordion__icon-line accordion__icon-line--v"></span>
+              </span>
+            </button>
+            <div class="accordion__content" data-accordion-content>
+              <div class="prose">
+                <ul class="editorial-specs-list" style="margin-bottom: 1.25rem;">
+                  <li><strong>Composition:</strong> 100% combed cotton</li>
+                  <li><strong>Weight:</strong> 180 GSM high-density knit</li>
+                  <li><strong>Neckline:</strong> Clean unbranded interior collar finish</li>
+                  <li><strong>Graphic:</strong> Direct-to-Film (DTF) high-definition transfer</li>
+                </ul>
+                <p><strong>Care Instructions:</strong></p>
+                <ul class="editorial-specs-list">
+                  <li>Wash inside out in cold water</li>
+                  <li>Use a gentle cycle with like colors</li>
+                  <li>Dry on low heat or flat dry in shade</li>
+                  <li>Do not iron directly over the print</li>
+                  <li>Turn inside out before ironing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Shipping & Returns -->
+          <div class="accordion__item" data-accordion-item>
+            <button type="button" class="accordion__header" data-accordion-header aria-expanded="false">
+              <span class="accordion__title">
+                SHIPPING & RETURNS
+              </span>
+              <span class="accordion__icon-wrap">
+                <span class="accordion__icon-line accordion__icon-line--h"></span>
+                <span class="accordion__icon-line accordion__icon-line--v"></span>
+              </span>
+            </button>
+            <div class="accordion__content" data-accordion-content>
+              <div class="prose">
+                {%- if product.metafields.custom.shipping_information != blank -%}
+                  {{ product.metafields.custom.shipping_information }}
+                {%- elsif section.settings.shipping_policy_text != blank -%}
+                  <p>{{ section.settings.shipping_policy_text }}</p>
+                {%- else -%}
+                  <p>Complimentary standard shipping on all orders over ₹1,499. Orders are processed within 24–48 business hours with end-to-end express courier tracking across India.</p>
+                  <p style="margin-top: 0.65rem;">Hassle-free 7-day return and exchange window for unworn items with original archival tags intact.</p>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Specification Strip (180 GSM • 100% COTTON • OVERSIZED FIT • DTF GRAPHIC • WHITE) -->
+  <div class="product-spec-strip" aria-label="Technical Specifications">
+    <div class="container">
+      <div class="product-spec-strip__inner">
+        <span class="spec-strip__item">180 GSM</span>
+        <span class="spec-strip__divider" aria-hidden="true">&bull;</span>
+        <span class="spec-strip__item">100% COTTON</span>
+        <span class="spec-strip__divider" aria-hidden="true">&bull;</span>
+        <span class="spec-strip__item">OVERSIZED FIT</span>
+        <span class="spec-strip__divider" aria-hidden="true">&bull;</span>
+        <span class="spec-strip__item">DTF GRAPHIC</span>
+        <span class="spec-strip__divider" aria-hidden="true">&bull;</span>
+        <span class="spec-strip__item" data-spec-color>{{ current_variant.option1 | default: 'WHITE' | upcase }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Large Full-Width Editorial Story Section (Dark Digital Showroom) -->
+  <section class="pdp-editorial-story" aria-label="Editorial Narrative">
+    <div class="pdp-editorial-story__container">
+      <div class="pdp-editorial-story__header">
+        <span class="pdp-editorial-story__eyebrow">ARCHIVE CONCEPT // 001</span>
+        <h2 class="pdp-editorial-story__title">
+          <span class="story-title-line">ETERNAL</span>
+          <span class="story-title-line">MOTION</span>
+        </h2>
+        <div class="pdp-editorial-story__line" aria-hidden="true"></div>
+        <p class="pdp-editorial-story__lead">
+          ALWAYS IN MOTION.<br>FURTHER AHEAD.
+        </p>
+      </div>
+
+      <div class="pdp-editorial-story__visual">
+        {%- if product.media.size > 0 -%}
+          <div class="story-media-frame" data-parallax-frame>
+            <img
+              src="{{ product.media.first | image_url: width: 1800 }}"
+              alt="SEVOLF Eternal Motion Silhouette"
+              loading="lazy"
+              class="story-media-image"
+              data-parallax-img
+            >
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Language Choreography Section (Movement, Direction, Space, Possibility) -->
+  <section class="pdp-design-language" aria-label="Design Philosophy">
+    <div class="container container--narrow">
+      <div class="design-language__grid" data-choreography-grid>
+        <div class="design-language__item" data-choreography-step>
+          <span class="design-language__index">01</span>
+          <h3 class="design-language__word">MOVEMENT</h3>
+        </div>
+        <div class="design-language__item" data-choreography-step>
+          <span class="design-language__index">02</span>
+          <h3 class="design-language__word">DIRECTION</h3>
+        </div>
+        <div class="design-language__item" data-choreography-step>
+          <span class="design-language__index">03</span>
+          <h3 class="design-language__word">SPACE</h3>
+        </div>
+        <div class="design-language__item" data-choreography-step>
+          <span class="design-language__index">04</span>
+          <h3 class="design-language__word">POSSIBILITY</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile Sticky Bottom Purchase Bar -->
+  <div class="mobile-sticky-purchase-bar" id="MobileStickyPurchaseBar" aria-hidden="true">
+    <div class="mobile-sticky-bar__inner">
+      <div class="mobile-sticky-bar__info">
+        <span class="mobile-sticky-bar__title">{{ product.title }}</span>
+        <span class="mobile-sticky-bar__price">₹{{ current_variant.price | money_without_currency }}</span>
+      </div>
+      <button type="button" class="btn btn--primary mobile-sticky-bar__btn" data-mobile-sticky-trigger>
+        ADD TO BAG
+      </button>
+    </div>
+  </div>
+
+  <!-- Accessible Size Guide Modal -->
+  {%- if has_size_guide -%}
+    <div
+      class="modal-backdrop"
+      id="SizeGuideModal"
+      data-size-guide-modal
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="SizeGuideModalTitle"
+      hidden
+    >
+      <div class="modal-dialog">
+        <div class="modal-dialog__header">
+          <h3 id="SizeGuideModalTitle" class="modal-dialog__title">Size Guide</h3>
+          <button type="button" class="modal-close-btn" data-size-guide-close aria-label="Close size guide">
+            {% render 'icon', icon: 'close' %}
+          </button>
+        </div>
+        <div class="modal-dialog__body">
+          {%- if product.metafields.custom.size_guide != blank -%}
+            <div class="prose size-guide-text">
+              {{ product.metafields.custom.size_guide }}
+            </div>
+          {%- endif -%}
+
+          {%- if size_chart_media != null -%}
+            <div class="size-chart-media-wrapper">
+              {{
+                size_chart_media
+                | image_url: width: 1200
+                | image_tag: loading: 'lazy', alt: 'Size Guide Chart'
+              }}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <!-- Accessible Fullscreen Image Lightbox -->
+  {%- if product.media.size > 0 -%}
+    <div
+      class="modal-backdrop lightbox-backdrop"
+      id="GalleryLightboxModal"
+      data-gallery-lightbox
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image Zoom View"
+      hidden
+    >
+      <div class="lightbox-container">
+        <button type="button" class="lightbox-close-btn" data-lightbox-close aria-label="Close image zoom">
+          {% render 'icon', icon: 'close' %}
+        </button>
+        <div class="lightbox-image-wrapper">
+          {{
+            product.media.first
+            | image_url: width: 2400
+            | image_tag:
+              loading: 'lazy',
+              alt: product.title,
+              class: 'lightbox-image',
+              data-lightbox-img: ''
+          }}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Product Information",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_info",
+      "label": "Enable sticky product info on desktop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dynamic_checkout",
+      "label": "Show dynamic checkout button (Buy Now)",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Trust Information Strip"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_info",
+      "label": "Show trust information strip",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_item_1_heading",
+      "label": "Trust item 1 heading",
+      "default": "Ships across India"
+    },
+    {
+      "type": "text",
+      "id": "trust_item_1_subtext",
+      "label": "Trust item 1 subtext",
+      "default": "Orders are prepared and dispatched promptly."
+    },
+    {
+      "type": "text",
+      "id": "trust_item_2_heading",
+      "label": "Trust item 2 heading",
+      "default": "Secure Checkout"
+    },
+    {
+      "type": "text",
+      "id": "trust_item_2_subtext",
+      "label": "Trust item 2 subtext",
+      "default": "Your payment information is encrypted and safe."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_return_trust",
+      "label": "Enable return/exchange trust item (Disabled by default)",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "trust_item_3_heading",
+      "label": "Trust item 3 heading (Optional)",
+      "default": "Customer Support"
+    },
+    {
+      "type": "text",
+      "id": "trust_item_3_subtext",
+      "label": "Trust item 3 subtext (Optional)",
+      "default": "Dedicated support for all order inquiries."
+    },
+    {
+      "type": "header",
+      "content": "Default Policies"
+    },
+    {
+      "type": "textarea",
+      "id": "shipping_policy_text",
+      "label": "Default shipping policy fallback",
+      "default": "All orders are processed and dispatched with end-to-end tracking. Delivery times vary between 3 to 7 business days depending on location."
+    }
+  ]
+}
+{% endschema %}

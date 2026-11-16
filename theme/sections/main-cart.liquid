@@ -1,0 +1,87 @@
+<section class="section-spacing section-spacing--cart">
+  <div class="container container--narrow">
+    <div class="cart-page-header">
+      <h1 class="cart-page-header__title">{{ 'cart.title' | t }}</h1>
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" class="cart-form">
+        <div class="cart-items-list">
+          {%- for item in cart.items -%}
+            <div class="cart-item-row" data-line-item-key="{{ item.key }}">
+              <div class="cart-item-row__media">
+                {%- if item.image -%}
+                  <img
+                    src="{{ item.image | image_url: width: 220 }}"
+                    alt="{{ item.title | escape }}"
+                    width="100"
+                    height="125"
+                    loading="lazy"
+                    class="cart-item-row__image"
+                  >
+                {%- endif -%}
+              </div>
+
+              <div class="cart-item-row__details">
+                <h3 class="cart-item-row__title">
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                </h3>
+                {%- unless item.product.has_only_default_variant -%}
+                  <p class="cart-item-row__variant">{{ item.variant.title }}</p>
+                {%- endunless -%}
+
+                <div class="cart-item-row__price-mobile">
+                  {{ item.final_line_price | money }}
+                </div>
+
+                <div class="cart-item-row__actions">
+                  <div class="cart-drawer__quantity">
+                    <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" class="cart-drawer__qty-btn" aria-label="Decrease quantity" style="text-decoration: none;">-</a>
+                    <span class="cart-drawer__qty-num">{{ item.quantity }}</span>
+                    <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}" class="cart-drawer__qty-btn" aria-label="Increase quantity" style="text-decoration: none;">+</a>
+                  </div>
+                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-item-row__remove">
+                    {{ 'cart.remove' | t }}
+                  </a>
+                </div>
+              </div>
+
+              <div class="cart-item-row__price-desktop">
+                {{ item.final_line_price | money }}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div class="cart-summary-card">
+          <div class="cart-summary-card__row">
+            <span>{{ 'cart.subtotal' | t }}</span>
+            <span class="cart-summary-card__total">{{ cart.total_price | money }}</span>
+          </div>
+          <p class="cart-summary-card__note">
+            {{ 'cart.taxes_and_shipping_policy_at_checkout_html' | t }}
+          </p>
+          <button type="submit" name="checkout" class="btn btn--full cart-summary-card__checkout">
+            {{ 'cart.checkout' | t }} &rarr;
+          </button>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="cart-empty-state">
+        <p class="cart-empty-state__message">
+          {{ 'cart.empty' | t }}
+        </p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn">
+          {{ 'cart.continue_shopping' | t }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart Page",
+  "settings": []
+}
+{% endschema %}

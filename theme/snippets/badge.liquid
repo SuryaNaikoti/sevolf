@@ -1,0 +1,62 @@
+{% comment %}
+  Renders product badge based on sale, sold out, explicit tags, etc.
+  Usage: {% render 'badge', product: product, use_variant: false %}
+{% endcomment %}
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+
+  assign fulfillment_meta = product.metafields.custom.fulfillment_type | downcase | strip
+  assign is_digital = false
+  assign is_bundle = false
+
+  if fulfillment_meta == 'digital'
+    assign is_digital = true
+  elsif fulfillment_meta == 'bundle'
+    assign is_bundle = true
+  elsif fulfillment_meta == 'physical'
+    assign is_digital = false
+    assign is_bundle = false
+  else
+    if product.type == 'Digital' or product.tags contains 'Digital' or product.tags contains 'digital'
+      assign is_digital = true
+    elsif product.type == 'Bundle' or product.tags contains 'Bundle' or product.tags contains 'bundle'
+      assign is_bundle = true
+    endif
+  endif
+
+  assign is_sold_out = false
+  unless target.available
+    assign is_sold_out = true
+  endunless
+
+  assign on_sale = false
+  if target.compare_at_price > target.price
+    assign on_sale = true
+  endif
+
+  assign is_new = false
+  if product.tags contains 'New' or product.tags contains 'new' or product.metafields.custom.is_new == true
+    assign is_new = true
+  endif
+-%}
+
+{%- if is_sold_out -%}
+  <span class="badge badge--sold-out">Sold Out</span>
+{%- elsif on_sale -%}
+  <span class="badge badge--sale">Sale</span>
+{%- elsif is_new -%}
+  <span class="badge badge--new">New</span>
+{%- elsif is_digital -%}
+  <span class="badge badge--digital">
+    {% render 'icon', icon: 'download' %} Digital
+  </span>
+{%- elsif is_bundle -%}
+  <span class="badge badge--neutral">
+    Bundle
+  </span>
+{%- endif -%}
+

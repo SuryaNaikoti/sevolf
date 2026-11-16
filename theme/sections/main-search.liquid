@@ -1,0 +1,55 @@
+<section class="section-spacing section-spacing--search">
+  <div class="container container--narrow">
+    <div class="search-page-header">
+      <h1 class="search-page-header__title">{{ 'general.search' | t }}</h1>
+    </div>
+
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-page-form">
+      <div class="search-page-form__row">
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'general.search_placeholder' | t }}"
+          class="search-page-form__input"
+        >
+        <button type="submit" class="btn search-page-form__btn">
+          {{ 'general.search' | t }}
+        </button>
+      </div>
+    </form>
+
+    {%- if search.performed -%}
+      {%- if search.results_count > 0 -%}
+        <div class="grid grid--3">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', product: item %}
+            {%- else -%}
+              <div class="search-result-article-card">
+                <span class="search-result-article-card__type">{{ item.object_type }}</span>
+                <h3 class="search-result-article-card__title"><a href="{{ item.url }}">{{ item.title }}</a></h3>
+                <p class="search-result-article-card__excerpt">{{ item.content | strip_html | truncatewords: 25 }}</p>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="search-empty-state">
+          <h3>{{ 'general.no_results' | t }}</h3>
+          <p style="color: var(--color-text-muted); margin-top: 0.5rem;">Try refining your query or browsing our complete catalog.</p>
+          <a href="{{ routes.all_products_collection_url }}" class="btn btn--outline" style="margin-top: 1.5rem;">
+            Explore All Products
+          </a>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search Page",
+  "settings": []
+}
+{% endschema %}

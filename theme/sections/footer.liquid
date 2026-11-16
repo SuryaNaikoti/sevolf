@@ -1,0 +1,117 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Col 1: Brand -->
+      <div class="footer-col">
+        <h4 style="font-family: var(--font-heading); font-size: 1.25rem; letter-spacing: -0.02em;">
+          {{ shop.name | default: 'SEVOLF' }}
+        </h4>
+        <p style="color: #A8A49C; font-size: 0.9rem; line-height: 1.6; max-width: 320px; margin-top: 1rem;">
+          {{ section.settings.brand_bio }}
+        </p>
+        <div style="margin-top: 1.5rem;">
+          {% render 'social-icons' %}
+        </div>
+      </div>
+
+      <!-- Col 2: Navigation -->
+      <div class="footer-col">
+        <h4>{{ section.settings.menu_1_title }}</h4>
+        <ul class="footer-nav">
+          {%- for link in section.settings.menu_1.links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <!-- Col 3: Customer Care -->
+      <div class="footer-col">
+        <h4>{{ section.settings.menu_2_title }}</h4>
+        <ul class="footer-nav">
+          {%- for link in section.settings.menu_2.links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <!-- Col 4: Newsletter -->
+      <div class="footer-col footer-newsletter">
+        <h4>{{ section.settings.newsletter_title }}</h4>
+        <p style="color: #A8A49C; font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem;">
+          {{ section.settings.newsletter_subtext }}
+        </p>
+        {%- form 'customer', id: 'footer-newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="footer-newsletter__form-row">
+            <input
+              type="email"
+              name="contact[email]"
+              placeholder="Enter your email"
+              required
+              aria-label="Email address"
+              class="footer-newsletter__input"
+            >
+            <button type="submit" class="btn btn--white footer-newsletter__btn">
+              Join
+            </button>
+          </div>
+        {%- endform -%}
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+      <p style="color: #5E5B55;">Independent Consumer Goods & Digital Architecture.</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "brand_bio",
+      "label": "Brand Description",
+      "default": "An independent label exploring the intersection of heavy cotton physical apparel, modern accessories, and deliberate digital utility."
+    },
+    {
+      "type": "text",
+      "id": "menu_1_title",
+      "label": "Menu 1 Title",
+      "default": "Shop"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Menu 1",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "menu_2_title",
+      "label": "Menu 2 Title",
+      "default": "Support"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Menu 2",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter Title",
+      "default": "The Dispatch"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_subtext",
+      "label": "Newsletter Subtext",
+      "default": "Occasional updates on physical drop schedules, digital releases, and editorial notes."
+    }
+  ]
+}
+{% endschema %}

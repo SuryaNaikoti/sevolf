@@ -1,0 +1,33 @@
+{% comment %}
+  Renders product price formatting with accessibility
+  Usage: {% render 'price', product: product, use_variant: false %}
+{% endcomment %}
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price
+  assign on_sale = false
+  if compare_at_price > price
+    assign on_sale = true
+  endif
+-%}
+
+<div class="price-container {% if on_sale %}price--on-sale{% endif %}" data-price-container>
+  <span class="visually-hidden">{{ 'products.product.price' | t | default: 'Price' }}:</span>
+  <span class="price-item price-item--regular" data-price-display>
+    {{ price | money }}
+  </span>
+
+  <span class="price-item price-item--compare{% unless on_sale %} visually-hidden{% endunless %}" data-price-compare-display>
+    {%- if on_sale -%}
+      <span class="visually-hidden">{{ 'products.product.regular_price' | t | default: 'Regular price' }}:</span>
+      {{ compare_at_price | money }}
+    {%- endif -%}
+  </span>
+</div>
+

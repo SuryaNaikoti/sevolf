@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "enable_sticky_info": true
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like"
+      }
+    },
+    "brand_world": {
+      "type": "brand-world",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "recommendations",
+    "brand_world"
+  ]
+}
